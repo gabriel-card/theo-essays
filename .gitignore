@@ -4,3 +4,14 @@
 *.log
 *.synctex.gz
 *.toc
+*.bbl
+*.blg
+*.brf
+*.out
+*.ilg
+*.idx
+*.ind
+*.hd
+*.lof
+*.loq
+*.lot

@@ -1,8 +1,9 @@
 
 \documentclass[
 	% -- opções da classe memoir --
+    article,            % artigo academico
 	12pt,				% tamanho da fonte
-	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
 	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
 	a4paper,			% tamanho do papel. 
 	% -- opções da classe abntex2 --
@@ -97,11 +98,18 @@
 }
 \makeatother
 % ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
 
 % ----
 % Início do documento
 % ----
 \begin{document}
+
+\citeoption{abnt-full-initials=yes}
 
 
 % Seleciona o idioma do documento (conforme pacotes do babel)
@@ -128,7 +136,7 @@
 
 % ---
 % inserir o sumario
-% ---
+---
 \pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents*
 \cleardoublepage
@@ -142,9 +150,47 @@
 % ----------------------------------------------------------
 % Introdução (mas presente no Sumário)
 % ----------------------------------------------------------
-\chapter{INTRODUÇÃO}
+\section{INTRODUÇÃO}
 % ----------------------------------------------------------
-Introooo
+Este trabalho pretende descrever de forma breve as principais hipóteses da Teoria Documental sobre a composição do Pentateuco, apresentando ao final a visão crítica do autor acerca dela.
 
+\section{PRINCIPAIS HIPÓTESES DA TEORIA DOCUMENTAL}
+A teoria documental, utilizando-se da crítica textual, busca identificar as fontes - ou autores - no processo de separação do texto a partir de diversas características textuais presentes em determinados trechos e não presentes em outros. Características tais como: utilização dos nomes divinos, Javé e Elohim; duplicação de conteúdo; tradições hebraicas descritas e implícitas no texto; semelhanças de vocabulário e estilo; entre outras.
+
+Detectara-se quatro fontes distintas, divididas pelas siglas: \textbf{J}, \textbf{E}, \textbf{JE}, \textbf{D}, \textbf{P}.
+
+\subsection{J - JAVISTA}
+Abrange textos de Gênesis 2 a Números 22-24, com alguns estudiosos inserindo também o texto de Deuteronômio 34\footnote{Mais informações encontradas na página 11 de \emph{Introdução ao Antigo Testamento} de \citeonline{LASOR}}. Detecta-se nesses textos o nome divino Javé juntamente com uma linguagem antropomórfica nas descrições sobre Deus.
+
+\subsection{E - ELOÍSTA}
+Abrange textos de Gênesis 20 até a revelação de seu nome Javé a Moisés em Êxodo 3:6\footnote{Mais informações encontradas na página 11 de \emph{Introdução ao Antigo Testamento} de \citeonline{LASOR}}. Entende-se que as partes remanescentes do texto dessa fonte esteja fragmentada de maneira quase impossível de se detectar.
+
+\subsection{JE - JAVISTA-ELOÍSTA}
+Utiliza-se essa sigla para denominar textos onde é árduo a diferenciação entre as fontes \textbf{J} e \textbf{E}.
+
+\subsection{D - DEUTERONOMISTA}
+Abrange o núcleo do livro de Deuteronômio e também a narrativa histórica de Josué a 2 Reis. É um texto com estilo prosaico e paranético.
+
+\subsection{P - SACERDOTAL}
+Abrange o núcleo de Números e Levíticos, tendo como característica a narrativa histórica em conjunto com a legislação. Nele também está contido genealogias, alianças, legislações ritualísticas e até mesmo plantas arquitetônicas para locais propícios a cultos, cerimônias e sacrifícios. Localiza também o culto dos judeus na criação do mundo em Gênesis 1\footnote{Mais informações encontradas na página 12 de \emph{Introdução ao Antigo Testamento} de \citeonline{LASOR}}.
+
+\section{CRÍTICAS}
+Do meio para o fim do século XX inicia-se diversas revisões acerca da teoria documental e autores como John Van Seters e Rolf Rendtorff tecem diversas críticas ao método, análise e conclusões de Wellhausen e seus anteriores. Abaixo trago uma crítica ao método e também uma sobre a consequência de um estudo estritamente crítico-textual a um texto que, em sua totalidade e unidade, traz consigo a base da fé e cosmovisão israelita.
+
+\subsection{O PRESSUPOSTO EVOLUCIONISTA DAS ORIGENS DAS RELIGIÕES}
+Após a publicação da obra \emph{A Origem das Espécies} de Charles Darwin no século XVIII, diversos cientistas sociais de sua época e posteriores começaram a aplicar idéias evolucionistas derivadas da evolução das espécies a partir da seleção natural\footnote{Um artigo que disserta sobre as origens do mito do darwinismo social é \emph{Origins of the myth of social Darwinism: The ambiguous legacy of Richard Hofstadter's Social Darwinism in American Thought} de \citeonline{LEONARD}}. De forma simples e superficial, a aplicação prática do darwinismo na análise das origens das religiões se dá na idéia de que as religiões se formam partindo de uma espécie de animismo, evoluem para um politeísmo recheado de antropomorfismos e fenômenos naturais explicados a partir de especulações sobre o divino para enfim evoluírem ao estágio final de monoteísmo ou henoteísmo.
+
+Tendo este pressuposto como única forma de origem de uma religião, Wellhausen e seus anteriores tentaram datar os textos e também agrupá-los entendendo as descrições e formas de interação com Deus narrados no texto como etapas de evolução da religião hebraica que mais tarde se tornaria o judaísmo, procurando indícios de uma suposta religião animista embrionária. Este entendimento é falso dado que temos evidências exaustivas dentro do texto de que a religião israelita era monoteísta desde seu início\footnote{Para mais elaborações e críticas acerca do método proposto por Wellhausen, verifique o livro \emph{Merece Confiança o Antigo Testamento?} de \citeonline{ARCHER}.}.
+
+\subsection{PENTATEUCO REDUZIDO A FRAGMENTOS EM DETRIMENTO DE SUA MENSAGEM}
+A \emph{superanálise} crítico-textual e a separação do texto do Pentateuco em fragmentos distintos e as formulações hipotéticas quanto a sua editoria tende a levar a despriorização do que deveria ser de importância primária: a interpretação do texto do Pentateuco. Entendendo-o como a base de fé e cosmovisão da nação israelita e também o testemunho desta mesma nação quanto a agência direta de Deus na sua história, se desfaz a idéia de que sua relevância é apenas de verificação sobre sua origem.
+
+Temos hoje no meio acadêmico defensores de uma abordagem que estuda a forma e função do texto dada pelos próprios israelitas, chamada de \emph{crítica canônica}. Embora levam em grande consideração os resultados dos estudos da teoria documentária, concentram-se na interpretação intertextual e exegese intrabíblica, tendo seu entendimento do texto como descrito por \citeonline{LASOR}:
+\begin{citacao}
+a formação do Pentateuco estabeleceu os parâmetros da compreensão israelita de sua fé como Torá. Para os editores bíblicos, os cinco primeiros livros constituíam a base da vida de Israel sob a soberania de Deus e fornecia a norma crítica de como a tradição mosaica devia ser compreendida pelo povo da aliança.\cite{LASOR}
+\end{citacao}
+
+\pagebreak
+\bibliography{20250215_at1_qa01.bib}
 
 \end{document}
