@@ -1,0 +1,200 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{ANTIGO TESTAMENTO 1: PENTATEUCO E HISTÓRICOS \\ QUESTÃO ABERTA 02}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2024}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{QUESTÃO ABERTA 01}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Antigo Testamento 1, solicitado pelo prof. Dr. Fábio Ito.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+% ----------------------------------------------------------
+\section{INTRODUÇÃO}
+% ----------------------------------------------------------
+Este trabalho pretende discutir quais os aspectos do livro de Juízes estão de acordo com a teologia Deuteronomista e quais aspectos favorecem a hipótese de uma origem tardia do mesmo.
+
+\section{O LIVRO DE JUÍZES}
+O livro de Juízes, seguindo a tradição judaica, tem Samuel como autor. Porém, após devido exame, é possível categorizar partes do livro de acordo com sua data relativa de autoria, inferida principalmente pela crítica textual aplicada. Por exemplo, é consenso de que o Cântico de Débora é uma das porções mais antigas de todo o Antigo Testamento \footnote{\citetext{LASOR} p.173}. É possível também notar diferenças significativas nas narrativas de diferentes histórias do livro de Juízes, como a história de Gideão e de Sansão, segundo \citeonline{LASOR}:
+\begin{citacao}
+O estudo cuidadoso de Juízes destaca diferentes estilos; compare a história de Gideão, por exemplo, com o ciclo de Sansão. Essas diferenças evidentes tendem a sustentar a teoria de que as histórias foram compostas por autores diferentes e transmitidas de maneiras diferentes; o "autor" ou "editor" final não fez um esforço substancial de conformá-las a um estilo uniforme. \cite[p.174]{LASOR}
+\end{citacao}
+
+
+\section {TRADIÇÕES PRÉ DEUTERONOMISTAS}
+% FOHRER e SELLIN, 2007, p. 287-292
+Anterior aos deuteronomistas, podemos denotar as porções mais antigas do texto de Juízes como uma compilação de anedotas de tradições das figuras heróicas provenientes da tradição oral presente nas tribos. Essa compilação, muito provavelmente, foi constítuida de maneira \emph{"solta, onde as narrativas se seguiam sem uma vinculação externa ou interna"}\cite[p.292]{FEHRER}.
+
+Ou seja, não havia nenhum interesse de seus autores originais e redatores de localizar essas histórias no espaço-tempo. Isto é notável dado que, um dos grandes esforços dos deuteronomistas foi de manter uma história bem localizada e datada até o início da monarquia. Enxerga-se, portanto, nas perícopes onde esta localização no espaço-tempo é realizada, as edições deuteronomistas formando o livro de Juízes próximo de como temos hoje.
+
+\pagebreak
+\section{A TEOLOGIA DEUTERONOMISTA NO LIVRO DE JUÍZES}
+Nestas mesmas perícopes, além do enquadramento espacial e temporal, também temos a repetição da idéia teológica central que os deuteronomistas empreenderam, exemplificada em Jz 3:12-15 e resumida por \citeonline{LASOR}:
+\begin{citacao}
+O povo "faz o que é mau", servindo a outros deuses.
+
+Javé envia uma nação para oprimi-lo.
+
+O povo clama a Javé.
+
+Javé levanta um libertador.
+
+O opressor é derrotado.
+
+O povo tem descanso. \cite[p.167]{LASOR}
+\end{citacao}
+
+Mesmo não havendo a intencionalidade dos autores e editores pré-deuteronomistas de explicitar uma única idéia, as histórias de heróis ungidos pelo Senhor para libertar o povo da opressão servem de pano de fundo para exemplificar e demonstrar a característica libertadora de Javé e a demonstração de sua graça após o arrependimento de seu povo. Não mais temos histórias de heróis libertadores soltas, mas um único Deus libertador que, por misericórdia de um povo arrependido, \emph{"concede o Espírito Santo a um desses heróis para que livre o povo de seus inimigos"} \cite[p.176]{LASOR}.
+
+Podemos perceber também nestas edições um esforço de contrastar a época de Israel onde não havia um rei com a época da monarquia (e.g. Jz 17:6; Jz 19:1). É possivel argumentar que os deuteronomistas aproveitaram também do livro de Juízes para uma pequena apologia à monarquia davídica, trazendo a compreensão da \emph{"monarquia em sua função singular pela qual é perpetuado o santuário central para onde Israel pode ir e fazer o que é correto aos olhos de Deus"} \cite[p.177]{LASOR}.
+
+
+\section{CONCLUSÃO}
+O livro de Juízes que temos hoje não é o mesmo que fora outrora, anterior a redação deuteronomista. Sua redação ocorre no final do período da monarquia e pós-exílio babilônico. Temos a clara influência da teologia deuteronomista presente em todas perícopes adicionadas no livro, ressaltando a centralidade de veneração a Javé e a rejeição de outros deuses. Provavelmente existia uma compilação pré-deuteronomista que foi utilizada como base para a redação final, onde histórias de heróis eram narradas sem uma idéia central que permeasse por todas narrativas.
+
+Curioso ressaltar que, mesmo com diferenças grandes entre essas histórias provindas da tradição israelita, a grande maioria delas de fato trazia Javé como o concessor da libertação.
+
+\pagebreak
+\bibliography{20250311_at1_qa02.bib}
+
+\end{document}
