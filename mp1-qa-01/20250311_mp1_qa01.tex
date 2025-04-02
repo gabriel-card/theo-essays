@@ -1,0 +1,171 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{METODOLOGIA DA PESQUISA \\ QUESTÃO ABERTA 01}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2024}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{QUESTÃO ABERTA 01}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Metodologia da Pesquisa, solicitado pela prof. Inês Murad.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+% ----------------------------------------------------------
+\section{INTRODUÇÃO}
+% ----------------------------------------------------------
+Este trabalho propõe um tema para Trabalho de Conclusão de Curso e sua justificativa.
+
+\section{TEMA}
+O tema será: "A formação de comunidades cristãs sob uma perspectiva escatológica.".
+
+\section{JUSTIFICATIVA}
+Será analisado neste Trabalho de Conclusão de Curso como se dá a formação de comunidades cristãs que, em sua incepção, possuem grande carga de expectativa escatológica. Será explorado primariamente a formação da Igreja Primitiva, não só como a primeira comunidade cristã mas também por sua grande força teológica na expectativa da segunda vinda de Cristo; e em seguida será pesquisado outras comunidades que tiveram, também, como principal característica ou principal motivador de formação comunitária esta mesma expectativa.
+
+Para elaborar o trabalho, será utilizado os método de pesquisa documental e descritiva que buscará detalhar e montar qual é o cenário propício para a formação de uma comunidade onde seus indivíduos, em conjunto, aguardam a volta do Messias baseado no estudo de comunidades cristãs que tiveram esta mesma crença como principal. O empenho estará em entender não só as circunstâncias prévias daqueles indivíduos que se juntaram em uma igreja ou comunidade mas também em como essa comunidade existia em si mesma e dentro da sociedade que estavam inseridos.
+
+Após entender como se dá este cenário propício para a formação destas igrejas, será também elaborado uma diferenciação entre essas comunidades com as demais comunidades que não possuem esta mesma crença como basilar (apesar de também terem a expectativa); características como estrutura eclesiástica, impacto dessas comunidades na sociedade e o dia-a-dia de seus membros.
+
+Por fim, espera-se contribuir não apenas com uma melhor compreensão acerca destas comunidades mas também demonstrar como nós, pertencentes a instituições cristãs que se empenham para se permanecer perene, podemos repensar em como adotar novas práticas comunitárias e estruturas eclesiásticas ou transformar as existentes para que consigamos retomar a expectativa da volta de Cristo como algo caro e importante à nossa fé.
+
+\pagebreak
+
+\end{document}
