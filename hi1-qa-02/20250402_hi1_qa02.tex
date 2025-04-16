@@ -7,9 +7,9 @@
 	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
 	a4paper,			% tamanho do papel. 
 	% -- opções da classe abntex2 --
-	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
-	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
-	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
 	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
 	% -- opções do pacote babel --
 	english,			% idioma adicional para hifenização
@@ -21,7 +21,7 @@
 % ---
 % Pacotes básicos 
 % ---
-\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage{times}				% Usa a fonte Times Roman	
 \usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
 \usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
@@ -57,6 +57,21 @@
 	\fi}%
 % ---
 
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
@@ -146,21 +161,22 @@
 % ELEMENTOS TEXTUAIS
 % ----------------------------------------------------------
 \textual
+\pagestyle{simple}
 
 % ----------------------------------------------------------
 % Introdução (mas presente no Sumário)
 % ----------------------------------------------------------
-\section{INTRODUÇÃO}
+
+\section{Introdução}
 % ----------------------------------------------------------
 O Humanismo e o renascimento foram movimentos filosóficos e culturais situados entre o final da Idade Média e o início da Modernidade. Ambos marcaram uma transição significativa na forma de pensar e compreender o mundo ao oferecerem um contraponto necessário ao dogmatismo presente na institucionalização da Igreja Católica Romana, que por sua vez buscava se consolidar como religião dominante, trazendo todo o mundo conhecido para a órbita da sua confissão de fé em um Deus único e em seu Filho Jesus Cristo. Humanismo e Renascimento representam, portanto, o início da transição para um pensamento crítico, científico e centrado na natureza humana.
 
-\section{CARACTERÍSTICAS DO HUMANISMO}
-
+\section{Características do Humanismo}
 O Humanismo surge em círculos eruditos europeus que buscavam a emancipação do pensamento, até então sob controle da Igreja Católica Romana. É marcado pela valorização da existência humana, de suas expectativas e necessidades. O homem passa a ser o tema central das discussões, compreendido como um indivíduo capaz de ser livre, adquirir conhecimento e buscar satisfação pessoal.
 
 O Humanismo inaugura um movimento contracultural que promove uma revolução significativa na emancipação do homem europeu. Rompe com a tradição medieval e influencia diretamente a criação do que se pode chamar de humanismo cristão, exercendo forte impacto sobre reformadores dos séculos XVI e XVII, como Calvino e Lutero. Nesse sentido, o Humanismo levanta questionamentos que serão respondidos de forma pragmática pelos movimentos posteriores: o renascimento e as reformas protestantes.
 
-\section{CARACTERÍSTICAS DO RENASCIMENTO}
+\section{Características do Renascimento}
 O Renascimento é um período de transição que marca a passagem para a modernidade ocidental. Nesse momento, elementos anteriormente centrais — promovidos pelo catolicismo durante a Idade Média — tornam-se marginais frente às novas discussões em ebulição.
 
 O homem passa a ser o elemento central, educando-se por meio de reflexões profundas sobre a natureza e a sociedade que o rodeia independente do monopólio da transcendentalidade oferecida pela Igreja Católica Romana.
@@ -169,11 +185,10 @@ Os renascentistas não produzem uma ruptura abrupta com as gerações anteriores
 
 Durante esse período, as estruturas rígidas e inflexíveis da Idade Média são substituídas por questionamentos, dúvidas e pela redescoberta do homem e de sua obra como reflexo de si mesmo e de suas interações com o mundo.
 
-\section{CONCLUSÃO}
+\section{Conclusão}
 O Humanismo e o Renascimento foram fundamentais para o surgimento de uma nova forma de pensar, na qual o ser humano passou a ser valorizado em sua individualidade, liberdade e capacidade racional. Esses movimentos prepararam o terreno para transformações culturais, religiosas e científicas profundas, marcando o fim do domínio absoluto da tradição medieval e abrindo caminho para a modernidade ocidental.
 
 
 % \pagebreak
 % \bibliography{20250226_hi1_qa01.bib}
-
 \end{document}
