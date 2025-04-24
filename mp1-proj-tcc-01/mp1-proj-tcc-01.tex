@@ -1,0 +1,212 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{PROJETO TCC \\ A FORMAÇÃO DE COMUNIDADES CRISTÃS SOB UMA PERSPECTIVA ESCATOLÓGICA: CONSEQUÊNCIAS DA EXPECTATIVA ESCATOLÓGICA NAS ORIGENS DE UMA IGREJA}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2024}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{QUESTÃO ABERTA 03}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Metodologia da Pesquisa 1, solicitado pela profa. Dra. Inês Murad.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={trabalho acadêmico},
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+---
+% \pdfbookmark[0]{\contentsname}{toc}
+% \tableofcontents*
+% \cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+\section*{TEMA}
+A formação de comunidades cristãs sob uma perspectiva escatológica: consequências da expectativa escatológica nas origens de uma igreja.
+
+\section*{JUSTIFICATIVA}
+Atualmente, igrejas e comunidades cristãs costumam tratar da vida em comunidade de forma secularizada, onde existe uma expectativa de perenidade quanto aos bens materiais e estruturas sociais. Estas atitudes são, em parte, diferentes de como comunidades cristãs que nascem a partir de uma expectativa escatológica, ou seja, uma expectativa do fim de todas as coisas, tais como a forma de gestão de recursos entre seus membros, a priorização da pregação do Evangelho e da segunda volta de Cristo, entre outros. Entendendo como essas igrejas e comunidades foram formadas e também compreendendo como suas noções da brevidade do fim permearam a formação de suas estruturas eclesiásticas, poderemos extrair informações e compreensões aplicáveis a comunidades cristãs que, hoje, não possuem a mesma perspectiva.
+
+\section*{PROBLEMA}
+Como o entendimento e a fé que a segunda volta de Jesus Cristo e o fim de todas as coisas influenciou a criação de comunidades e igrejas cristãs ao longo da história.
+
+\section*{OBJETIVO GERAL}
+Conhecer as estruturas eclesiásticas e o modus operandi dos membros de comunidades cristãs que se formaram sob um contexto de extrema influência escatológica pela história da Igreja.
+
+\section*{OBJETIVO ESPECÍFICOS}
+\begin{itemize}
+    \item Apontar comunidades cristãs e igrejas específicas que se formaram sob este contexto, pela história.
+    \item Identificar características eclesiásticas e sociais entre essas comunidades e igrejas.
+    \item Demonstrar as diferenças eclesiásticas e sociais entre igrejas contemporâneas e estas igrejas.
+\end{itemize}
+
+\section*{METODOLOGIA}
+Para elaborar o trabalho, será utilizado os método de pesquisa documental e descritiva que buscará detalhar e montar qual é o cenário propício para a formação de uma comunidade onde seus indivíduos, em conjunto, aguardam a volta do Messias baseado no estudo de comunidades cristãs que tiveram esta mesma crença como principal. O empenho estará em entender não só as circunstâncias prévias daqueles indivíduos que se juntaram em uma igreja ou comunidade mas também em como essa comunidade existia em si mesma e dentro da sociedade que estavam inseridos.
+
+\section*{SUMÁRIO PROVISÓRIO}
+\begin{itemize}
+    \item Introdução: Resumo do projeto e resumo da conclusão.
+    \item Capítulo 1: Comunidades cristãs e igrejas formadas pela expectativa da segunda volta de Cristo.
+    \item Capítulo 2: Características eclesiásticas e sociais compartilhadas.
+    \item Capítulo 3: Igrejas contemporâneas em contraposição a expectativa da segunda volta de Cristo.
+    \item Conclusão: Retomada do tema e do problema, demonstrando como o objetivo geral foi alcançado.
+\end{itemize}
+
+\section*{REFERENCIAL TEÓRICO INICIAL}
+\nocite{CAIRNS}
+\nocite{DOOL}
+\nocite{WEINLICK}
+\nocite{ATWOOD}
+\nocite{LOPES}
+
+% ----------------------------------------------------------
+
+\renewcommand{\bibname}{{}}
+\bibliography{template_flam.bib}
+
+\end{document}
