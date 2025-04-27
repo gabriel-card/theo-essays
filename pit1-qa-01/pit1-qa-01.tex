@@ -1,0 +1,185 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{PRODUÇÃO E INTERPRETAÇÃO DE TEXTOS \\ QUESTÃO ABERTA 01}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2024}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{QUESTÃO ABERTA 01}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Produção e Interpretação de Textos, solicitado pela Profa. Dra. Inês Murad.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+% \pdfbookmark[0]{\contentsname}{toc}
+% \tableofcontents*
+% \cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+% Escreva, a partir dos textos abaixo, um texto DISSERTATIVO a respeito da importância do bom domínio da língua portuguesa em nossa sociedade,  principalmente na forma como líderes, no meio religioso, se comunicam com os fiéis. Você pode utilizar as informações dos textos de apoio, mas não pode transcrevê‐las literalmente.
+
+\section*{O BOM DOMÍNIO DA LÍNGUA PORTUGUESA É INCLUSIVO}
+% ----------------------------------------------------------
+Pastores que dominam a língua portuguesa conseguem exercer seu ministério de forma mais integral e inclusiva. O ministério pastoral possui alguns desafios intrinsecamente relacionados com a comunicação: o aconselhamento aos fiéis, o ensino das Escrituras e a pregação do Evangelho. Cada uma destas responsabilidades possui particularidades que o uso da língua portuguesa de forma consciente e intencional reduz o ruído entre a mensagem da liderança e a interpretação dela por sua comunidade.
+
+O domínio da língua torna a forma de falar e se expressar transponível. Durante um aconselhamento pastoral, é necessário que sua comunicação se adapte ao receptor. Igrejas possuem comunidades compostas por pessoas de diferentes camadas sociais, contextos econômicos e níveis de instrução formal. O mesmo conselho dado a pessoas pertencentes a interseccionalidades diversas pode ser transmitido de formas diferentes: analogias e comparações simples e cotidianas, citações e referências que requerem algum nível de erudição, ou até mesmo o uso adequado de gírias e expressões coloquiais. Esta adaptabilidade, além de reduzir o ruído entre o mensageiro e o receptor, também pode construir relacionamentos mais sólidos entre o líder e sua comunidade.
+
+A competência na língua portuguesa em sua forma escrita pela liderança torna sua presença perene. Um pastor que domina a escrita consegue produzir textos e materiais claros e coesos que podem ser lidos e estudados por sua comunidade. Uma igreja municiada por estudos e exposições produzidos pela sua liderança, conseguem recorrer a estes materiais durante os momentos que não estão juntos fisicamente para a contínua construção de seu conhecimento. Por exemplo, aulas de escolas dominicais quando acompanhadas de bons textos e materiais, deixam de ser um momento único em um dia da semana para serem diversos momentos durante a semana de revisitação ao que foi estudado. Torna-se, assim, a presença pastoral constante mesmo quando fisicamente seria impossível.
+
+Pregações construídas considerando a forma de linguagem necessária para melhor compreensão de toda comunidade são mais eficazes. A motivação de toda pregação é a proclamação do Evangelho para todos. Ora, se o Evangelho se faz necessário a toda humanidade, então a forma como será transmitido deverá ter o mínimo de impecilhos possíveis para o entendimento do máximo possível de pessoas. Tomemos por exemplo o próprio Jesus em suas parábolas: narrativas simples de fácil compreensão ao judeu médio de sua época que, em suas simplicidades, remetem a uma retórica ímpar. Sua excelência é evidenciada pela perenidade de suas parábolas e relevância até os dias de hoje. Da mesma forma, um pastor ao pregar o Evangelho tem a responsabilidade de se fazer entendido ao máximo de pessoas possíveis de sua comunidade, mesmo que isso signifique deixar de lado certos vocabulários ou demonstrações de erudição.
+
+Portanto, pastores e líderes que se atentem para o bom uso da língua portuguesa, com sabedoria e pleno domínio de seus recursos, conseguem atuar em suas comunidades de forma solidária, perene e inclusiva. Adaptar seu discurso durante aconselhamentos pastorais, produzir textos e materiais de apoio para estudos em sua comunidade e construir pregações se atentando a fácil compreensão por todos, só são possíveis caso o líder possua um sólido domínio da língua, tanto falada quanto escrita. Apesar de alguns momentos se tornarem necessários demonstrações de erudição durante um discurso, a verdadeira eloquência de um líder se aflora quando sua mensagem é entendida de forma plena pela sua comunidade e, muitas das vezes, isso significa em intencionalmente se comunicar de forma simples, assim como Jesus.
+% \renewcommand{\bibname}{{REFER\^ENCIAS}}
+% \bibliography{template_flam.bib}
+
+\end{document}
