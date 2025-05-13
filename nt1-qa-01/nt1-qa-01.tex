@@ -1,0 +1,194 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{NOVO TESTAMENTO 1: EVANGELHO E ATOS \\ QUESTÃO ABERTA 03}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2024}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{QUESTÃO ABERTA 03}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de História da Igreja: Antiga e Medieval, solicitado pelo prof. Dr. Elias Bartolomeu Binja.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+% \pdfbookmark[0]{\contentsname}{toc}
+% \tableofcontents*
+% \cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% O Novo Testamento é recheado de alusões, inferências, exemplos e comparação retirados do Antigo Testamento, especialmente suas histórias. A esse respeito, faça o que se pede abaixo: 
+
+% A. Faça uma lista de suas histórias favoritas do AT. 
+
+% B. Em seguida, liste as histórias do AT que aparecem com alguma regularidade no NT. 
+
+% C. Por que você acha que essas histórias foram escolhidas pelos autores do NT? Quais são suas principais características e o que elas têm em comum?
+
+\section*{HISTÓRIAS FAVORITAS DO A.T.}
+Histórias de pessoas que colocam sua devoção ao Senhor em primeiro lugar, mesmo diante de consequências graves. Exemplos: Daniel sendo acusado de violar o decreto real por prestar culto ao Senhor; Sadraque, Mesaque e Abede-Nego se recusando a prestar culto ao rei da Babilônia.
+
+\section*{HISTÓRIAS DO A.T. PRESENTES NO N.T.}
+\begin{itemize}
+	\item A Criação e Adão e Eva (Hebreus 4:4, 1 Coríntios 15:45)
+	\item Jonas (Mateus 12:40)
+	\item Abraão, José, Moisés (Atos 7)
+  \end{itemize}
+% ----------------------------------------------------------
+
+\section*{PRINCIPAIS CARACTERÍSTICAS}
+Das histórias escolhidas, é possível notar que todas servem ou de analogias para algo que acontecerá ou aconteceu na vida de Cristo ou como argumentação que aponta para a testificação de Cristo como Messias. Por exemplo, vemos em Atos 7 Estevão recontando toda a história da antiga aliança e demonstrando como os mesmos que ali se opunham ao Espírito Santo também se opuseram no passado; sua argumentação valida a messianidade de Cristo e o mover do Espírito Santo quando coloca os libertinos, cirineus e alexandrinos no mesmo papel que os patriarcas que venderam José, também no mesmo papel que Faraó na história de Moisés. Podemos também perceber a analogia com a morte e ressurreição de Cristo em Mateus 12:40, recontando a história de Jonas e seus dias na barriga do grande peixe.
+
+Pode-se imaginar que essas histórias foram escolhidas justamente por serem as histórias que formam a identidade do povo judeu, sem Abraão, José e Moisés é impossível definir o povo hebreu (posteriormente judeu) de todos os outros povos mesopotâmicos; estes personagens são a raíz da tradição, cultura e identidade deste povo. Pode-se especular também que existe a intencionalidade de relacionar Jesus Cristo como, de fato, o Messias prometido através destas histórias que, da forma como narradas, podem indicar sua conclusão em Jesus Cristo.
+
+% \renewcommand{\bibname}{{REFER\^ENCIAS}}
+% \bibliography{template_flam.bib}
+
+\end{document}
