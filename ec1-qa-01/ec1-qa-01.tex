@@ -1,0 +1,196 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{ESPIRITUALIDADE CRISTÃ \\ QUESTÃO ABERTA 01}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2024}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{QUESTÃO ABERTA 01}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Espiritualidade Cristã, solicitado pelo Prof. Dr. André Botelho.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+% \pdfbookmark[0]{\contentsname}{toc}
+% \tableofcontents*
+% \cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+% Sobre a espiritualidade, aprendemos que
+
+%  é uma característica própria do ser humano, requer prática, entendimento e decisão; portanto, envolve racionalidade, sentimento e vivência. 
+
+%  é abrangente. Qualquer descrição de espiritualidade que pretender circunscrevê-la a um de seus aspectos ou a um dos aspectos da realidade humana falhará em seu entendimento. Ela abrange tudo o que está relacionado à vida no mundo e fora dele.
+ 
+%  é diversa. Por ser um elemento da vida religiosa, ela se apresenta de múltiplas formas em suas diversas manifestações.
+ 
+%  Com base nos traços comuns expostos, apresente um conceito de espiritualidade no qual todos sejam incluídos.
+
+\section*{CONCEITUANDO ESPIRITUALIDADE}
+% ----------------------------------------------------------
+
+Para formar um conceito de espiritualidade devemos, antes, entender o que é espírito ou algo espiritual. Podemos tomar emprestado a etimologia da palavra \emph{rûwach} do hebraico, que de forma literal pode-se traduzir como vento ou sopro, em uma forma mais simbólica também pode significar espírito. Da mesma forma que um sopro ou vento, espírito pode ser entendido como algo que é possível sentir, perceber, idealizar mas que não é material nem visível. Também, assim como o vento que mantém seu percurso caso interpelado por uma tela de mosquitos, estamos diante de algo real que transpassa a fisicalidade em uma condição sobrenatural.
+
+Espiritualidade, portanto, pode ser definida como a capacidade intuitiva do ser humano de perceber e interagir com aquilo que é real mas não em condição material. Reduzindo o escopo ao cristianismo, podemos acrescentar a essa definição uma fala do apóstolo Paulo: "Já estou crucificado com Cristo; e vivo, não mais eu, mas Cristo vive em mim; e a vida que agora vivo na carne, vivo-a pela fé do Filho de Deus" (Gl 2, 20)\footnote{GÁLATAS. In: A BÍBLIA SAGRADA: Almeida Corrigida Fiel. São Paulo, 2011.}. A espiritualidade por Paulo é uma transformação radical da práxis de sua própria vida, não apenas a capacidade do ser humano de perceber aquilo que é espiritual. Paulo admite que toda sua realidade anterior está morta e que, apesar dele estar vivo hoje nesta mesma carne, essa vida é em sua totalidade direcionada ao que é espiritual, no caso, o próprio Cristo. Podemos destrinchar deste mesmo trecho de Paulo algumas características da espiritualidade que ele mesmo define.
+
+Para estarmos nós crucificado com Cristo é necessário renunciarmos a nós mesmos e seguir a Cristo até o calvário. Existe um aspecto disciplinar na práxis da espiritualidade onde é necessário que tomemos atitudes dentro da nossa própria realidade e materialidade que nos leve ao Espírito. Paulo tem a mesma ênfase que Jesus: "E dizia a todos: Se alguém quer vir após mim, negue-se a si mesmo, e tome cada dia a sua cruz, e siga-me." (Lc 9, 23)\footnote{LUCAS. In: A BÍBLIA SAGRADA: Almeida Corrigida Fiel. São Paulo, 2011.}. Independente de como se entenda essa prática, e aqui podemos reunir diversas formas como a dedicação total a contemplação, solidão e oração dos padres do deserto, a busca pela santidade dos puritanos ou das expressões carismáticas, conclui-se que para atingir esta espiritualidade é necessário prática e decisão de forma racional.
+
+Se Cristo vive em nós ao invés de nós vivermos sós, toda nossa realidade humana é diretamente atingida por Cristo. Entendendo que através desta disciplina e prática diária nos torna agora mortos, toda e qualquer expressão de vida em nós reflete a vida de Cristo em todos os aspectos de nossa vida. Rejeita-se, portanto, a ideia de compartimentalizar a espiritualidade como apenas um dos diversos aspectos da nossa realidade; a espiritualidade cristã transpassa por tudo, inclusive em âmbitos seculares. Um cristão se torna expressamente espiritual em sua vida familiar, acadêmica, laboral. Trazendo mais uma vez Paulo, podemos sintetizar essa expressão da vida de Cristo em nós na forma dos frutos do Espírito: "Mas o fruto do Espírito é: amor, gozo, paz, longanimidade, benignidade, bondade, fé, mansidão, temperança."(GL 5, 22)\footnote{GÁLATAS. In: A BÍBLIA SAGRADA: Almeida Corrigida Fiel. São Paulo, 2011.}.
+
+Podemos, portanto, conceituar espiritualidade como o conjunto de práxis disciplinadas e suas expressões consequentes na realidade vivida, provindas pelo Espírito. Em outras palavras, é aquilo que transpassa o material e o transforma, mediante sua prática e fé no Filho de Deus.
+
+% \pagebreak
+% \renewcommand{\bibname}{{REFER\^ENCIAS}}
+% \bibliography{ec1-qa-01.bib}
+
+\end{document}
