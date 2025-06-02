@@ -1,0 +1,186 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{NOVO TESTAMENTO 1: EVANGELHO E ATOS \\ QUESTÃO ABERTA 02}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2025}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{QUESTÃO ABERTA 02}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Novo Testamento 1: Evangelho e Atos, solicitado pelo prof. Dr. Elias Bartolomeu Binja.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+% \pdfbookmark[0]{\contentsname}{toc}
+% \tableofcontents*
+% \cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% “Conclui-se que todo esse movimento possui uma função no Quarto Evangelho, pois progressivamente Tenda/Santuário e Templo são elevados ao seu ápice quando o novo Templo será o Pai e o Filho: “Ele, porém, falava do templo do seu corpo” (Jo 2,21); “Não vi nenhum templo nela, pois o seu templo é o Senhor, o Deus todo-poderoso, e o Cordeiro” (Ap 21,22). E o sentido próprio desse movimento encontra-se na narrativa da “Mulher Samaritana”, na qual ela indaga sobre o verdadeiro santuário no qual se deve adorar à Deus, Garizim ou Jerusalém, seguida da resposta de Jesus, que não será nem em um e nem no outro, mas em Espírito e Verdade (cf. Jo 20,24).” (ARAUJO, Gilvan Leite de. Do santuário do deserto ao santuário do corpo de Jesus. In: Revista Caminhando, v. 24, n. 2, p. 139, 2019).
+
+% A partir do texto comente sobre a relação feita por Jesus entre o Templo de Jerusalém e o seu corpo como o novo lugar onde seria feita a adoração a Deus, e explique a importância dessa compreensão para o culto cristão nos dias de hoje. 
+
+\section*{}
+
+A união das tradições do norte e sul na narrativa joanina se encontrando em Jesus como o novo e eterno Templo, encerrando assim a disputa do verdadeiro santuário narrado no encontro da "Mulher Samaritana", direciona Jesus como o cumprimento das profecias do segundo capítulo de Isaías e do segundo capítulo de Ageu: onde "a glória desta última casa será maior do que a da primeira, diz o Senhor dos Exércitos, e neste lugar darei a paz, diz o Senhor dos Exércitos." (Ag 2.9)\footnote{AGEU. In: A BÍBLIA SAGRADA: Almeida Corrigida Fiel. São Paulo, 2011.} e "[...] acontecerá nos últimos dias que se firmará o monte da casa do Senhor no cume dos montes, e se elevará por cima dos outeiros; e concorrerão a ele todas as nações." (Is 2.2)\footnote{ISAÍAS. In: A BÍBLIA SAGRADA: Almeida Corrigida Fiel. São Paulo, 2011.}. Sendo Cristo o novo e último Templo, é nEle e através dEle que todas as nações agora possuem acesso aos objetivos da existência dos templos anteriores: a realização do sacrifício para expiação de pecados, representado pela morte de Jesus como Cordeiro de Deus; o pastoreio na Palavra revelada e a adoração ao Deus vivo.
+
+Algumas implicações se tornam pertinentes diante desta mudança de paradigma. Ora, sendo Jesus o novo Templo e habitando em nós o Espírito Santo, somos também de algum modo o templo de Deus? Paulo em sua primeira carta aos Coríntios parece concordar com esta implicação lógica: "Não sabeis vós que sois o templo de Deus e que o Espírito de Deus habita em vós? Se alguém destruir o templo de Deus, Deus o destruirá; porque o templo de Deus, que sois vós, é santo." (1Co 3.16-17)\footnote{1 CORÍNTIOS. In: A BÍBLIA SAGRADA: Almeida Corrigida Fiel. São Paulo, 2011.}
+
+Sendo nós, cristãos, templos de Deus por habitar em nós o Espírito Santo que é, também, a presença real de Jesus, conclui-se que ao nos reunirmos em culto também trazemos conosco as mesmas responsabilidades que outrora eram do templo: o sacrifício, o pastoreio e a adoração. Em outros termos, o culto cristão deve ter como objetivo a pregação do Evangelho, apresentando Cristo como o Cordeiro de Deus que retira o pecado do mundo, tornando possível a comunhão de todos povos com Deus, guiando-os em adoração.
+
+
+
+
+\pagebreak
+% \renewcommand{\bibname}{{REFER\^ENCIAS}}
+% \bibliography{nt1-qa-02.bib}
+
+\end{document}
