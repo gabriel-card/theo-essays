@@ -1,0 +1,190 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{ESPIRITUALIDADE CRISTÃ \\ QUESTÃO ABERTA 02}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2025}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{QUESTÃO ABERTA 02}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Espiritualidade Cristã, solicitado pelo Prof. Dr. André Botelho.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+% \pdfbookmark[0]{\contentsname}{toc}
+% \tableofcontents*
+% \cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+% Descreva quais foram na sua opinião as manifestações de virtude e também de contradição na espiritualidade evangélica brasileira durante este período de pandemia e quarentena que estamos vivendo nestes dias.
+
+
+\section*{A PANDEMIA E A ESPIRITUALIDADE EVANGÉLICA BRASILEIRA}
+% ----------------------------------------------------------
+Entendendo a abrangência dos termos espiritualidade evangélica brasileira como toda a práxis e mentalidade observada nas expressões comunitárias de fé dos evangélicos do Brasil, podemos notar contradições e virtudes em suas atitudes durante a pandemia global e quarentena. Diante de um cenário onde aglomerações não são possíveis por motivos sanitários, a igreja evangélica se deparou com alguns dilemas, entre eles: como cultuar a Deus de forma comunitária enquanto separados fisicamente?
+
+A impossibilidade de congregar trouxe o desafio das igrejas de se reinventarem para manter sua vida comunitária em andamento. Com a amplitude de alcance da internet e facilidade de transmissões ao vivo, igrejas a partir do trabalho voluntários de seus membros, conseguiram se tornar presentes no mundo virtual. Apesar de ter sido uma resposta a um momento de quarentena e direcionado a seus próprios membros, criou-se um cenário onde a Palavra é pregada para uma amplitude imensa de pessoas que, outrora, jamais teriam tido contato com aquela comunidade. Manifesta-se, assim, uma forma sem precedentes na história de culto a Deus: cada família em sua própria casa prestando o mesmo culto, ao mesmo tempo, em comunhão, mesmo distantes fisicamente.
+
+Porém isto não foi universal: existiram igrejas resistentes a quarentena que se recusaram a fechar suas portas e continuaram com os cultos presenciais de forma ordinária. Estas igrejas, e aqui dispensando o comentário político-partidário dada a complexidade do tema que este texto não se propõe, entendiam que o direito de prestar culto era primário ao direito sanitário da sociedade como um todo. Sobrepuseram a livre manifestação de culto prevista em lei em detrimento da saúde pública, colocando seus próprios fiéis em risco e toda a sociedade ao permitir aglomerações durante uma janela de tempo extremamente sensível a transmissão de um vírus que, hoje, ceifou aproximadamente 716 mil vidas\footnote{Informação retirada do site Coronavirus Brasil, construído pela \citeonline{CoronavirusBrasil}.}. Não há como mensurar o impacto direto dessas igrejas que se recusaram a fechar as portas com o número de mortes, mas é plausível dizer que esta atitude, contrária as normas sanitárias, não ajudaram a diminuir as vidas ceifadas. Ora, se uma igreja tem como mais importante não cessar seus cultos presenciais mesmo que isso signifique a morte de pessoas, questiona-se se a motivação dos cultos é, de fato, a adoração a Deus de forma comunitária. Afinal, o sacrifício que muitas igrejas fizeram de fechar suas portas foi um ato de amor e cuidado com a própria comunidade e sociedade em que está inserida.
+
+Posta esta contradição, podemos perceber como as manifestações da espiritualidade evangélica brasileira foram tanto virtuosas como contraditórias. Apesar dos evangélicos serem vistos como uma única camada social, é um povo diverso e com formas de expressão de espiritualidade também diversas. É imperativo que, ao exercemos nossa espiritualidade, nós nos atentemos ao nosso redor: será que realmente existe uma conspiração para nos impedir de prestar culto a Deus, ou será que isso é fabricação de líderes para manutenção do status quo? Será que nós deveriamos reivindicar direitos que, em seu exercício, afetará de forma mortal nosso próximo? Que tenhamos, como Igreja, a postura esperada por Cristo: 
+\begin{citacao}
+"O meu mandamento é este: Que vos ameis uns aos outros, assim como eu vos amei. Ninguém tem maior amor do que este, de dar alguém a sua vida pelos seus amigos". (João 15.12-13)	
+\end{citacao}
+
+
+\pagebreak
+\renewcommand{\bibname}{{REFER\^ENCIAS}}
+\bibliography{ec1-qa-02.bib}
+
+\end{document}
