@@ -1,0 +1,186 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{NOVO TESTAMENTO 1: EVANGELHOS E ATOS \\ QUESTÃO DISSERTATIVA}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2025}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{QUESTÃO DISSERTATIVA}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Novo Testamento 1: Evangelho e Atos, solicitado pelo prof. Dr. Elias Bartolomeu Binja.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+% \pdfbookmark[0]{\contentsname}{toc}
+% \tableofcontents*
+% \cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+% \section*{AS DUAS NATUREZAS HUMANAS}
+% Como os outros três Evangelhos, o Evangelho de João carrega uma visão de Jesus Cristo pós-pascal, isto é, ele pressupõe que os eventos da sua morte e ressurreição conduziram seus discípulos a uma interpretação bastante diferente da sua existência histórica. Contudo, enquanto os três sinóticos limitam essa interpretação à realidade histórica de Jesus, no Evangelho de João se percebe uma tendência a desligar-se desta para enfatizar inteiramente a interpretação pós-pascal. De fato, João comenta que a vivência histórica de Jesus é impossível de ser entendida no momento do seu acontecimento, e seu significado aguardava por uma revelação posterior mediada pelo Espírito. Explique, em 15 linhas, como isso acontece mostrando exemplos de passagens do Evangelho.
+
+Percebe-se a ênfase de João na impossibilidade de entender a vivência histórica de Jesus Cristo no mesmo momento em que ela acontecia em passagens como "Respondeu Jesus, e disse-lhe: O que eu faço não o sabes tu agora, mas tu o saberás depois." (João 13.7) e:
+\begin{citacao}
+Tenho-vos dito isto, estando convosco. Mas aquele Consolador, o Espírito Santo, que o Pai enviará em meu nome, esse vos ensinará todas as coisas, e vos fará lembrar de tudo quanto vos tenho dito. (João 14.25,26)
+\end{citacao}
+
+A ideia joanina para o entendimento pleno de quem é Jesus Cristo e o que ele representou na história é retrojetada, ou seja, a partir do auxílio do Paráclito, o Espírito Santo que só foi derramado posteriormente, olha-se para o passado e entende-se o que de fato aconteceu. Esse processo de reconhecimento de quem Jesus foi e entendimento de suas palavras, como o extenso uso da expressão \emph{Eu Sou} em seus discursos, é o que constrói o entendimento de seu caráter autorevelador sobre quem ele é: homem e divino, que também é um com o Pai.
+
+É, portanto, através desse método de resgate às memórias de seus discursos e sinais através do auxílio do Espírito Santo, que temos a construção inicial da teologia de Jesus Cristo como ser divino, preexistente e um com Deus.
+% ----------------------------------------------------------
+\nocite{JOAO}
+\pagebreak
+\renewcommand{\bibname}{{REFER\^ENCIAS}}
+\bibliography{template_flam.bib}
+
+\end{document}

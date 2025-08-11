@@ -1,0 +1,186 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{ANTIGO TESTAMENTO 1: PENTATEUCO E HISTÓRICOS \\ QUESTÃO DISSERTATIVA}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2025}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{QUESTÃO DISSERTATIVA}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Antigo Testamento 1: Pentateuco e Históricos, solicitado pelo prof. Dr. Fábio Ito.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+% \pdfbookmark[0]{\contentsname}{toc}
+% \tableofcontents*
+% \cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+\section*{A VIDA COMO ATO CONTÍNUO DE DEUS}
+% Uma teologia da criação deve considerar a criação da vida no livro de Gênesis. O homem somente recebeu vida porque Deus lhe deu, soprando em suas narinas o fôlego de vida (Gn 2.7). O redator de Jó amplia tal compreensão com a fala de Eliú quando afirma que a vida é um dom constante de Deus: “O Espírito de Deus me fez, e o sopro do Todo Poderoso me dá vida” (Jó 33.4). Exponha, em 20 linhas, de que modo o dom da vida é um ato contínuo de Deus e não se refere somente a um momento fundante do mundo.
+
+Entender o dom da vida como uma dádiva divina que aconteceu em apenas um único momento na história é entender que o Criador não interage mais com sua criação. A idéia deísta de não existir nenhum tipo de intervenção divina desde o momento da criação é fundamentalmente contrária a narrativa da redenção que encontramos na Bíblia.
+
+Encontramos na narrativa bíblica, em uma leitura panorâmica, a queda da humanidade ao pecado e um plano redentor de Deus para resgatar e restaurar sua criação, que culmina na vinda, morte, ressurreição e ascensão de Jesus Cristo. Ora, se existe um plano vindo diretamente do Criador para restaurar sua própria criação, já se torna impossível a compreensão deísta, afinal, um deus que não intervém em sua criação não estaria preocupado em restaurá-la. Portanto, ao mergulharmos nos textos do antigo e do novo testamento, temos testemunhas da continuidade dessas intervenções que guiam a humanidade a sua salvação de seu estado de queda. Em outras palavras, a restauração da vida que, antes de tudo, Deus nos deu.
+
+% "Já estou crucificado com Cristo; e vivo, não mais eu, mas Cristo vive em mim; e a vida que agora vivo na carne, vivo-a pela fé do Filho de Deus" (Gl 2, 20)\footnote{GÁLATAS. In: A BÍBLIA SAGRADA: Almeida Corrigida Fiel. São Paulo, 2011.}
+Paulo, em sua carta aos gálatas, descreve de forma palpável como esse ato contínuo de Deus é presente no momento que vivemos: "Já estou crucificado com Cristo; e vivo, não mais eu, mas Cristo vive em mim; e a vida que agora vivo na carne, vivo-a pela fé do Filho de Deus" (Gl 2, 20)\footnote{GÁLATAS. In: A BÍBLIA SAGRADA: Almeida Corrigida Fiel. São Paulo, 2011.}. É através da fé em Cristo que sua vida passada é considerada morta e a única coisa viva dentro dele é a vida de Cristo. Ora, se quem vive em mim hoje é o próprio Cristo, o Verbo que por Ele tudo foi criado, a dádiva dessa vida é constante e eterna e não apenas um momento único no início de todas as coisas.
+
+
+% ----------------------------------------------------------
+
+\pagebreak
+\renewcommand{\bibname}{{REFER\^ENCIAS}}
+\bibliography{template_flam.bib}
+
+\end{document}

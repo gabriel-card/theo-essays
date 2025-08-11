@@ -1,0 +1,191 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{PRODUÇÃO E INTERPRETAÇÃO DE TEXTOS \\ QUESTÃO DISSERTATIVA}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2025}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{QUESTÃO DISSERTATIVA}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Produção e Interpretação de Textos, solicitado pelo prof. Dra. Inês Murad.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+% \pdfbookmark[0]{\contentsname}{toc}
+% \tableofcontents*
+% \cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+% \section*{AS DUAS NATUREZAS HUMANAS}
+
+% tese: apenas em Cristo temos relento e salvação da opressão provinda de um mundo caído e cheio de iniquidade
+
+Vivemos hoje sob estruturas políticas e econômicas que refletem a queda do humanidade e trazem consequências diretas em nossas vidas. Essas estruturas são observadas em diversos aspectos da vida humana, tais como: laboral, familiar, social. Apesar da tentativa de compartimentalizar cada esfera de nossas vidas como coisas separadas, são, na verdade, interligadas e simbióticas. Se em alguma delas sofremos pela iniquidade, seja nossa ou de outros, outras também serão impactadas.
+
+Por exemplo, a ganância por parte de poucos por lucros cada vez maiores força a superexploração de trabalhadores. Essa quantidade de trabalho em excesso, associado ao constante medo que permeia todos os trabalhadores de perder seu sustento, eclodirá em exaustão tanto física quanto mental a estas pessoas. Esta situação o levará a negligenciar sua vida familiar, ou até mesmo tornar impossível sua presença de forma ativa e participativa em seu casamento ou com seus filhos. Percebe-se, assim, um efeito em cascata onde da ganância de uns surge a exaustão em outros que por fim acarreta em casamentos feridos e paternidades abandonadas.
+
+Podemos também enxergar os frutos dessa iniquidade em nossa sociedade, como resultado dessa bola de neve. Por exemplo, é por causa desta negligência familiar e parental que enfrentamos o aumento da deliquência juvenil e infidelidade matrimonial. Vivendo, portanto, sob o fardo da exploração do próprio trabalho e assistindo a sociedade se deteriorar cada vez mais, é improvável que alguém consiga nutrir qualquer tipo de otimismo ou afetividade calorosa. Pelo contrário, temos a construção de uma forma de agir e pensar cada vez mais rude, seca e sem amor.
+
+O Evangelho, com sua mensagem, traz a alternativa transcendental a todos os participantes desta cascata de iniquidade: ao ganancioso, ao explorado, ao filho negligenciado. Cristo chama ao alívio a todos: cansados e oprimidos. Através do jugo suave e fardo leve oferecido por Cristo que poderão achar descanso para suas almas. Agora, independentemente das circunstâncias, a humanidade possui uma alternativa que transcende este mundo caído e nos dá a possibilidade de vivermos uma vida gentil, mansa e amorosa.
+
+% onde cada vez mais nos enclausuramos em condomínios com grades altas,
+
+Eu, Gabriel Cardoso dos Santos Faleiro, declaro que produzi este texto de maneira íntegra e original, sem recorrer ao plágio ou ao uso de inteligência artificial para sua criação. Todas as ideias, argumentos e referências foram desenvolvidos de forma honesta, garantindo que o conteúdo reflita exclusivamente meu próprio raciocínio e pesquisa.
+% ----------------------------------------------------------
+
+% \nocite{JOAO}
+% \pagebreak
+% \renewcommand{\bibname}{{REFER\^ENCIAS}}
+% \bibliography{template_flam.bib}
+
+\end{document}
