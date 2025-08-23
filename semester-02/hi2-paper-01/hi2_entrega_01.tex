@@ -1,0 +1,207 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{HISTÓRIA DA IGREJA: MODERNA E CONTEMPORÂNEA \\ ENTREGA 1}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2025}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{ENTREGA 1}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de História da Igreja: Moderna e Contemporânea, solicitado pelo prof. Ms. Paulo Henrique Martins.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico},
+		hidelinks=true,
+		% colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+\section{INTRODUÇÃO}
+% • Contextualização breve sobre o cristianismo protestante.
+% • Relevância histórica e atual do tema.
+% • Apresentação dos objetivos do trabalho.
+
+\section{REFORMA PROTESTANTE E SEUS IMPACTOS INICIAIS}
+
+\subsection{PRINCIPAIS REFORMADORES}
+\subsubsection{Martinho Lutero}
+Nascido em 1483, na atual Alemanha, inicia sua vida acadêmica na Universidade de Erfurt e posteriormente se torna um monge depois de uma promessa feita a Santa Ana para que o poupasse durante uma perigosa tempestade. Por anos lecionou teologia, especificamente como professor de Bíblia, e também recebeu seu título de doutor em teologia. Para aprofundar suas lições de Bíblia, passou a estudá-la nas línguas originais. Foi durante estes estudos que se convenceu de doutrinas que definiriam a Reforma Protestante teologicamente, a justificação pela fé (\emph{sola fide}) e a autoridade única e máxima das Escrituras (\emph{sola scriptura}).
+
+Revoltou-se quando entrou em contato com a venda de indulgências e um caso de corrupção envolvendo a consagração de um arcebispo que não teria idade para tal, e em 31 de outubro de 1517 pregou suas Noventa e Cinco Teses na porta da Igreja do Castelo de Wittenberg. Apesar das Teses serem direcionadas a esses casos específicos de abusos, posteriormente Lutero admite que seria necessária uma ruptura para que o ideal de Igreja revelado no Novo Testamento fosse resgatado. Com suas Teses sendo traduzidas e se espalhando pela Europa e a continuidade da inquietação de Lutero em publicar panfletos cada vez mais incisivos, tanto com denúncias quanto apelos a reformas estruturais e hierárquicas, a Igreja Romana responde com a bula \emph{Exsurge Domine}, culminando em sua excomunhão.\footciteref{CAIRNS259}
+
+\subsubsection{Ulrico Zuínglio}
+Nascido em 1484 na Suíça, inicia sua trajetória acadêmica na Universidade de Viena. Por muitos anos foi sacerdote de paróquia e capelão, servindo ao papado e a Igreja Romana. Extremamente influenciado por Erasmo e pelo humanismo, afastou-se da teologia escolástica em favor da Bíblia em si. Foi servindo como pastor e capelão em uma comunidade da Suíça que entrou em contato com os mesmos abusos de indulgências que Lutero havia também observado além dos contínuos cenários de mercenários suíços mortos de forma violenta. Sua oposição aos abusos da Igreja de Roma se tornam públicos gradualmente, com Zuínglio ridicularizando Roma aos moldes de Erasmo, proibindo o serviço de mercenários a estrangeiros e declarando que dízimos não eram exigência divina mas uma questão de voluntariedade.
+
+O desconforto das autoridades católicas diante de tais ações de Zuínglio os levaram a promover um debate público. Zuínglio então prepara seus 67 Artigos, onde confessava como Lutero a salvação pela fé e na autoridade máxima das Escrituras. O debate foi tanto um sucesso para suas ideias que ganharam condições legais na cidade, com Zurique já tendo os ensinos de Zuínglio como doutrinas de forma plena em 1525. Apesar de suas ideias terem sido aceitas de forma pacífica em Zurique, conforme foram sendo espalhadas pelos cantões da Suíça, as regiões mais rurais se mantiveram fiéis ao papa e em 1529 uma guerra aberta aconteceu entre os cantões protestantes e os cantões católicos. Zuínglio morre em uma dessas guerras, quando juntou-se aos seus soldados em batalha completando sua carreira de capelão até o fim.\footciteref{CAIRNS270}
+
+\subsubsection{João Calvino}
+Pode-se dividir a vida de Calvino em dois períodos: do seu nascimento em 1509 na França até 1536, momento que fora um estudante; e de 1536 até o ano de sua morte em 1564, que fora o líder de Genebra. Foi durante seus estudos em Paris que entrou em contato com ideias humanistas e também protestantes. Após a elaboração de um documento reformista, foi forçado a sair da França. Em poucos anos, na Basiléia, finaliza sua obra de mais influência: \emph{As Institutas da Religião Cristã}.
+
+Em 1536, durante uma viagem a Genebra, foi convencido por Farel a ficar e se tornar ministro de ensino de Genebra. Suas reformas junto de Farel os levaram a um exílio entre 1538 a 1541, e quando os reformadores reestabeleceram o controle de Genebra, convidaram Calvino a voltar a cidade. Durante seu tempo como ministro até sua morte, Calvino se dedicou na promulgação e manutenção das \emph{Ordenanças Eclesiásticas}, que tratavam da divisão dos oficiais da Igreja de Genebra e delimitava os campos de atuação destes oficiais. Neste momento se encontram as principais críticas a Calvino, que se davam no uso da força estatal na vida privada, críticas essas que certamente são válidas mas que sempre devem levar em consideração os moldes da época quanto ao relacionamento da religião e da vida social. A convicção da religião do Estado ser obrigatória a todos era comum a protestantes e católicos. 
+
+Seu trabalho em Genebra transformou a cidade em um modelo protestante para diversos outros grupos protestantes na Europa e até na América. Suas \emph{Institutas} também foram pivotais para a fé reformada ao ponto que, hoje em dia, o termo \emph{teologia reformada} pode ser uma espécie de sinédoque onde quem discursa quer dizer, na verdade, calvinismo e não toda a pluralidade de pensamentos reformados. \footciteref{CAIRNS278}
+
+\subsection{CONSEQUÊNCIAS TEOLÓGICAS E SOCIAIS DA REFORMA PROTESTANTE}
+\subsection{REAÇÕES: CONTRARREFORMA E DESDOBRAMENTOS}
+
+
+\noindent Declaração\linebreak Eu, Gabriel Cardoso dos Santos Faleiro, declaro que produzi este texto de maneira íntegra e original, sem recorrer ao plágio ou ao uso de inteligência artificial para sua criação. Todas as ideias, argumentos e referências foram desenvolvidos de forma honesta, garantindo que o conteúdo reflita exclusivamente meu próprio raciocínio e pesquisa.
+% ----------------------------------------------------------
+
+\pagebreak
+\renewcommand{\bibname}{{REFER\^ENCIAS}}
+\bibliographystyle{abntex2-alf}
+\bibliography{hi2_entrega_01.bib}
+
+\end{document}
