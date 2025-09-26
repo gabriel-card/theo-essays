@@ -1,0 +1,240 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{NOVO TESTAMENTO 2: CARTAS E APOCALIPSE \\ ENTREGA 2}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2025}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{ENTREGA 2}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Novo Testamento 2: Cartas e Apocalipse, solicitado pelo prof. Ms. Everson Spolaor.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+\section{INTRODUÇÃO}
+% Introduzir a intenção de: trazer uma explicação breve e direta do contexto das epístolas neotestamentárias e do apocalipse de João e
+% justificar a relevância de se estudar a vida e ministério de Paulo.
+Este trabalho tem como objetivo trazer explicações e explanações breves e diretas do contexto das epístolas neotestamentárias e do Apocalipse de João. Apesar da superficialidade pretendida, a relevância de se entender o contexto geral e específico de cada epístola, como autor, destinatário, motivações e até mesmo o contexto social de cada comunidade será evidenciada ao contrastarmos este conhecimento com o habitual uso dessas epístolas na vida comunitária e pessoal das igrejas contemporâneas.
+
+\section{AS EPÍSTOLAS NEOTESTAMENTÁRIAS}
+Usaremos a divisão proposta por Vielhauer, onde temos o corpus paulino cuja autoria remete a Paulo; o ciclo joanino referindo-se às cartas escritas pelo apóstolo João e seu apocalipse; e as cartas pseudônimas que são compostas pela carta de Tiago, primeira e segunda carta de Pedro e a carta de Judas.
+
+\subsection{CORPUS PAULINO}
+Segundo \citeonline[p.94]{VIELHAUER}, as cartas paulinas, estruturalmente, seguem as convenções epistolares de seu meio. Seu início contém o nome do remetente, seus destinatários e uma saudação. Em seguida temos o proêmio, que apesar de ausente na carta de Galátas, 1 Timóteo e Tito, costuma ser quando Paulo escreve em agradecimento quanto ao crescimento e permanência na fé da comunidade destinatária, e quando também, logo em seguida, apresenta sua motivação de escrever ou o tema propriamente dito da carta. Após isso se inicia de fato sua mensagem e desenvolvimento de argumentos ou tratados, e, em seu fim, temos a conclusão da carta com saudações casuais da própria comunidade do remetente aos destinatários.
+
+Um aspecto interessante sobre algumas cartas de Paulo é que grande parte delas foi ditada por Paulo, não escrita diretamente. Este fato cria algumas particularidades que tornam as cartas paulinas diferentes das outras epístolas, onde temos diversas argumentações feitas com perguntas retóricas e logo em seguida alguma resposta ou explicação, ou discussões com adversários imaginários o repreendendo-o, e até mesmo trocadilhos e efeitos sonoros por rima. É extremamente necessário que tenhamos isto em mente para entender o que Paulo quis dizer com a maior precisão possível.
+
+\subsection{CICLO JOANINO}
+A primeira carta de João, diferente das outras duas, não possui uma estrutura clara ou comum a estrutura epistolar. Apesar de apresentada como carta pela Igreja Antiga, a ausência de destinatários, saudações, a difícil inserção do problema da heresia, que é o tema da carta, no contexto de alguma comunidade específica ou agrupamento de comunidades, é possível dizer que seu escritor não tinha a motivação de escrever uma carta. Podemos, então, entender a primeira carta de João como um tratado ou um manifesto que se propõe a preservar a fé em face da heresia dirigido a todos os cristãos.
+
+Já a segunda e terceira carta possuem uma estrutura epistolar comum, com seus pré-escrito e pós-escrito existentes e similares.
+% \subsection{CARTAS PSEUDÔNIMAS}
+\section{O APOSTOLADO DE PAULO}
+\subsection{CONVERSÃO}
+É durante uma viagem a Damasco com o objetivo de encontrar cristãos, prendê-los e conduzí-los a Jerusalém para julgamento que Paulo tem a visão que iniciaria sua conversão. Como narrado no capítulo nove do livro de Atos dos Apóstolos, Jesus aparece a Paulo em um resplendor que o cega e o derruba do cavalo que montava: 
+\begin{citacao}
+(...) chegando perto de Damasco, subitamente o cercou um resplendor de luz do céu. E, caindo em terra, ouviu uma voz que lhe dizia: Saulo, Saulo, por que me persegues? E ele disse: Quem és, Senhor? E disse o Senhor: Eu sou Jesus, a quem tu persegues. Duro é para ti recalcitrar contra os aguilhões. E ele, tremendo e atônito, disse: Senhor, que queres que eu faça? E disse-lhe o Senhor: Levanta-te, e entra na cidade, e lá te será dito o que te convém fazer. (Atos 9:3-6)
+\end{citacao}
+E esse processo de conversão se encerra em Damasco, onde Ananias que também recebera uma visão do Senhor recebe Paulo e, impondo as mãos sobre Paulo, é restaurada a visão. De início enfrentou bastante resistência dos próprios cristãos dada sua fama persecutória: "E, quando Saulo chegou a Jerusalém, procurava ajuntar-se aos discípulos, mas todos o temiam, não crendo que fosse discípulo." (Atos 9:26) Mas Barnabé tomou-o consigo e o levou até os apóstolos como os versículos seguintes narram e, seguiu para Tarso onde passou alguns anos sem nenhuma movimentação missionária. Especula-se que foram anos que ele passou em estudo e meditação.
+\subsection{EVANGELHO PARA GENTIOS}
+Um dos maiores temas de discussão da Igreja Primitiva era a inclusão dos gentios em seu corpo, e, por isso, grande parte dos textos neotestamentários lidam especificamente sobre essa questão. Durante os capítulos 10 a 12 do livro de Atos dos Apóstolos, temos a narração de eventos que demonstram essa inclusão gradual dos gentios e resistência por parte dos judeus cristãos. Começando pela visão de Pedro acerca do lençol com animais descendo dos céus, com o batismo do centurião romano chamado Cornélio e a demonstração de insatisfação dos próprios apóstolos que permaneceram em Jerusalém com a postura de Pedro aos gentios. Vemos, portanto, que este era um assunto polêmico até mesmo entre a autoridade máxima da Igreja Primitiva.
+
+Paulo, após seus anos de estudo, inicia seu apostolado com sua primeira viagem missionária rumo a Chipre e outros destinos da Ásia Menor. Ao retornar a Antioquia, Paulo escreve uma carta enderaçada a Igreja da Galácia, e é com esta carta que se inicia o movimento de inserção definitiva dos gentios na Igreja, culminando poucos anos depois no Concílio de Jerusalém. Esta epístola tem como objetivo principal combater os judeus convertidos que afirmavam que, para um gentio também ser um cristão, deveria guardar as leis mosaicas e se circuncidar. É nesta epístola que teremos a primeira defesa doutrinária da justificação pela fé, e a separação clara entre o que é ser etnicamente um judeu e o que é ser um cristão. Paulo entende que é através da fé que gentios são justificados perante ao Senhor e não pelo cumprimento da lei mosaica, e também tenciona que a lei foi dada ao povo eleito, que não conseguiu cumprí-la na totalidade e também necessita da fé no sacrifício e ressurreição de Cristo para sua própria justificação.
+\begin{citacao}
+Aquele, pois, que vos dá o Espírito, e que opera maravilhas entre vós, o faz pelas obras da lei, ou pela pregação da fé? Assim como Abraão creu em Deus, e isso lhe foi imputado como justiça. Sabei, pois, que os que são da fé são filhos de Abraão. Ora, tendo a Escritura previsto que Deus havia de justificar pela fé os gentios, anunciou primeiro o evangelho a Abraão, dizendo: Todas as nações serão benditas em ti. De sorte que os que são da fé são benditos com o crente Abraão. Todos aqueles, pois, que são das obras da lei estão debaixo da maldição; porque está escrito: Maldito todo aquele que não permanecer em todas as coisas que estão escritas no livro da lei, para fazê-las. E é evidente que pela lei ninguém será justificado diante de Deus, porque o justo viverá pela fé. (Gálatas 3:5-11)
+\end{citacao}
+Assim, Paulo argumenta que, dada a impossibilidade de cumprimento da lei de forma perfeita e plena e a natureza da lei de demonstrar a condição humana caída, a justificação é dada apenas mediante a fé do cumprimento da promessa feita a Abraão por Cristo, e nesta promessa todas as nações da Terra estão incluídas. Temos, então, a epítome da posição de Paulo quanto a polêmica entre cristãos judeus e gentios: não há mais judeu, nem grego, nem nenhuma etnia; há apenas filhos de Deus pela fé em Cristo Jesus.
+\begin{citacao}
+Porque todos sois filhos de Deus pela fé em Cristo Jesus. Porque todos quantos fostes batizados em Cristo já vos revestistes de Cristo. Nisto não há judeu nem grego; não há servo nem livre; não há macho nem fêmea; porque todos vós sois um em Cristo Jesus. E, se sois de Cristo, então sois descendência de Abraão, e herdeiros conforme a promessa. (Gálatas 3:26-29)
+\end{citacao}
+% \subsection{TEOLOGIA PAULINA SOBRE O REINO DE DEUS}
+% ----------------------------------------------------------
+
+\pagebreak
+\noindent Declaração\linebreak Eu, Gabriel Cardoso dos Santos Faleiro, declaro que produzi este texto de maneira íntegra e original, sem recorrer ao plágio ou ao uso de inteligência artificial para sua criação. Todas as ideias, argumentos e referências foram desenvolvidos de forma honesta, garantindo que o conteúdo reflita exclusivamente meu próprio raciocínio e pesquisa.
+\pagebreak
+\renewcommand{\bibname}{{REFER\^ENCIAS}}
+\bibliography{nt2_entrega_02.bib}
+
+\end{document}
+
+
+% \section{INTRODUÇÃO}
+
+% \section{A MISSÃO APOSTÓLICA DE PAULO}
+
+
+% \subsection{PRINCIPAIS REFORMADORES}
+% Introdução
+
+% •    Apresentar o contexto das epístolas do Novo Testamento e o Apocalipse.
+% •    Justificar a relevância do estudo sobre o papel de Paulo na propagação do Evangelho.
+% •    Introduzir a tese principal e os tópicos que serão desenvolvidos.
+% ______________
+
+% 1. A Missão Apostólica de Paulo
+% •    Breve panorama biográfico de Paulo e sua conversão.
+% •    A comissão divina recebida para evangelizar os gentios.
+% •    A visão teológica de Paulo sobre o Reino de Deus.
+
+% ______________
+
+% O que se espera:
+% •    Retomar os principais argumentos e reafirmar a importância de Paulo no crescimento do cristianismo.
+% •    Refletir sobre a atualidade da mensagem paulina na vida comunitária e pessoal dos fiéis.
+% •    Sugerir caminhos para aprofundamento teológico e espiritual.
