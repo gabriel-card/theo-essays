@@ -1,0 +1,330 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{HISTÓRIA DA IGREJA: MODERNA E CONTEMPORÂNEA \\ ENTREGA 3}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2025}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{ENTREGA 3}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de História da Igreja: Moderna e Contemporânea, solicitado pelo prof. Ms. Paulo Henrique Martins.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico},
+		hidelinks=true,
+		% colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    \center
+    \ABNTEXchapterfont\large\imprimirinstituicao
+
+    \ABNTEXchapterfont\large\imprimirautor
+
+    \vfill
+    \begin{center}
+    \ABNTEXchapterfont\bfseries\large\imprimirtitulo
+    \end{center}
+    \vfill
+
+    \large\imprimirlocal %<<<<<<<<<<<mude
+
+    \large\imprimirdata %<<<<<<<< mude
+
+    \vspace*{1cm}
+  \end{capa}
+}
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+\section{INTRODUÇÃO}
+% • Contextualização breve sobre o cristianismo protestante.
+% • Relevância histórica e atual do tema.
+% • Apresentação dos objetivos do trabalho.
+A Reforma Protestante representou em sua época, e ainda representa hoje, uma inconformação multifacetada e plural com a Igreja de Roma e seu relacionamento com suas vidas religiosas, sociais e políticas. Como \citeonline{LINDBERG} propôs, não temos como resumir a Reforma Protestante como, costuma-se convencionar, a apenas uma reforma. Este trabalho tem como objetivo resumir as principais ideias destas reformas e seus proponentes, e também dar o mínimo de contextualização necessária para que se denote as principais diferenças entre cada momento e entre cada reformador, além de seus fundamentos comuns.
+
+\section{REFORMA PROTESTANTE E SEUS IMPACTOS INICIAIS}
+
+\subsection{PRINCIPAIS REFORMADORES}
+Apesar do entendimento de que a Reforma foi um produto de sua época, onde o descontentamento com a Igreja lado a lado com uma crescente forma de enxergar a vida de forma secular começou a transformar os pensamentos e atitudes da sociedade de maneira gradual, podemos apontar pessoas específicas que contribuíram de forma especial tanto para a fundamentação teológica quanto para a própria tomada de atitude ao se reclamar e demandar por reformas à Igreja e ao Estado. Nomes como Martinho Lutero, Ulrico Zuínglio, João Calvino, Guillaume Farel, John Knox, entre outros, se eternizaram na história cristã se envolvendo de diferentes formas neste empreendimento, algumas vezes, curiosamente, com diferentes opiniões acerca tanto da teologia quanto da práxis reformista.
+
+\subsubsection{Martinho Lutero}
+Nascido em 1483, na atual Alemanha, iniciou sua vida acadêmica na Universidade de Erfurt e posteriormente se tornou um monge depois de uma promessa feita a Santa Ana para que o poupasse durante uma perigosa tempestade. Por anos lecionou teologia, especificamente como professor de Bíblia, e também recebeu seu título de doutor em teologia. Para aprofundar suas lições, passou a estudá-la nas línguas originais. Foi durante estes estudos que se convenceu de doutrinas que definiriam a Reforma Protestante teologicamente, a justificação pela fé (\emph{sola fide}) e a autoridade única e máxima das Escrituras (\emph{sola scriptura}).
+
+De acordo com \citeonline{CAIRNS}, Martinho revoltou-se quando entrou em contato com a venda de indulgências e um caso de corrupção envolvendo a consagração de um arcebispo que não teria idade para tal, e em 31 de outubro de 1517 pregou suas Noventa e Cinco Teses na porta da Igreja do Castelo de Wittenberg. Apesar das Teses serem direcionadas a esses casos específicos de abusos, posteriormente Lutero admite que seria necessária uma ruptura para que o ideal de Igreja revelado no Novo Testamento fosse resgatado. Com suas Teses sendo traduzidas e se espalhando pela Europa e a continuidade da inquietação de Lutero em publicar panfletos cada vez mais incisivos, tanto com denúncias quanto apelos a reformas estruturais e hierárquicas, a Igreja Romana responde com a bula \emph{Exsurge Domine}, culminando em sua excomunhão.
+
+\subsubsection{Ulrico Zuínglio}
+Nascido em 1484 na Suíça, iniciou sua trajetória acadêmica na Universidade de Viena. Por muitos anos foi sacerdote de paróquia e capelão, servindo ao papado e à Igreja Romana. Por \citeonline{CAIRNS}, foi extremamente influenciado por Erasmo e pelo humanismo, afastou-se da teologia escolástica em favor da Bíblia em si. Foi servindo como pastor e capelão em uma comunidade da Suíça que entrou em contato com os mesmos abusos de indulgências que Lutero havia também observado além dos contínuos cenários de mercenários suíços mortos de forma violenta. Sua oposição aos abusos da Igreja de Roma se tornam públicos gradualmente, com Zuínglio ridicularizando Roma aos moldes de Erasmo, proibindo o serviço de mercenários a estrangeiros e declarando que dízimos não eram exigência divina mas uma questão de voluntariedade.
+
+O desconforto das autoridades católicas diante de tais ações de Zuínglio os levaram a promover um debate público. Zuínglio então prepara seus 67 Artigos, onde confessava como Lutero a salvação pela fé e na autoridade máxima das Escrituras. O debate foi tanto um sucesso para suas ideias que ganharam condições legais na cidade, com Zurique já tendo os ensinos de Zuínglio como doutrinas de forma plena em 1525. Apesar de suas ideias terem sido aceitas de forma pacífica em Zurique, conforme foram sendo espalhadas pelos cantões da Suíça, as regiões mais rurais se mantiveram fiéis ao papa e em 1529 uma guerra aberta aconteceu entre os cantões protestantes e os cantões católicos. Zuínglio morreu em uma dessas guerras, quando juntou-se aos seus soldados em batalha completando sua carreira de capelão até o fim.
+
+\subsubsection{João Calvino}
+Como \citeonline{CAIRNS} propôs, pode-se dividir a vida de Calvino em dois períodos: do seu nascimento em 1509 na França até 1536, momento que foi um estudante; e de 1536 até o ano de sua morte em 1564, que foi o líder de Genebra. Foi durante seus estudos em Paris que entrou em contato com ideias humanistas e também protestantes. Após a elaboração de um documento reformista, foi forçado a sair da França. Em poucos anos, na Basiléia, finaliza sua obra de mais influência: \emph{As Institutas da Religião Cristã}.
+
+Em 1536, durante uma viagem a Genebra, foi convencido por Farel a ficar e se tornar ministro de ensino de Genebra. Suas reformas junto de Farel os levaram a um exílio entre 1538 a 1541, e quando os reformadores restabeleceram o controle de Genebra, convidaram Calvino a voltar à cidade. Durante seu tempo como ministro até sua morte, Calvino se dedicou na promulgação e manutenção das \emph{Ordenanças Eclesiásticas}, que tratavam da divisão dos oficiais da Igreja de Genebra e delimitavam os campos de atuação destes oficiais. Neste momento se encontram as principais críticas a Calvino, que se davam no uso da força estatal na vida privada, críticas essas que certamente são válidas mas que sempre devem levar em consideração os moldes da época quanto ao relacionamento da religião e da vida social. A convicção da religião do Estado ser obrigatória a todos era comum a protestantes e católicos. 
+
+Seu trabalho em Genebra transformou a cidade em um modelo protestante para diversos outros grupos protestantes na Europa e até na América. Suas \emph{Institutas} também foram pivotais para a fé reformada ao ponto que, hoje em dia, o termo \emph{teologia reformada} pode ser uma espécie de sinédoque onde quem discursa quer dizer, na verdade, calvinismo e não toda a pluralidade de pensamentos reformados.
+
+\subsection{CONSEQUÊNCIAS TEOLÓGICAS E SOCIAIS DA REFORMA PROTESTANTE}
+Por \citeonline{SHELLEY}, a reforma se afasta da perspectiva Agostiniana com o princípio da \emph{justificação pela fé} tornando a justificação uma etapa necessária para a santificação, ao invés de ser alcançada através desta outra. Em termos práticos, é impossível para o homem que se torne justo a partir do seu próprio esforço. Essa mudança de paradigma foi radical e podemos identificar consequências sociais influenciadas por esse deslocamento teológico. Ora, entendendo então que o processo de santificação é posterior à dádiva da justiça, através da Graça, situações adversas que aconteçam na vida do crente não mais se tornam juízo divino cuja solução passa pela autoridade da Igreja; se tornam apenas situações onde todos estão sujeitos a passar pela natureza caída tanto da humanidade quanto da criação. Logo, a própria percepção dos protestantes e, posteriormente, da sociedade, para a solução de problemas que agora são encarados como naturais se volta para a própria natureza. Por exemplo, um doente agora deverá buscar um médico para se tratar e não a Igreja para se confessar.
+
+Além disso, temos também a autoridade última e máxima das Escrituras. As consequências dessa doutrina se tornam óbvias: não mais a Igreja e o papa detém a autoridade, mas as próprias Escrituras revelam a si mesma e conferem autoridade a si. Aliado a afirmação do sacerdócio de todos os crentes como resultado da fé pessoal em Cristo \cite[p.263]{CAIRNS}, a reforma atacou diretamente a hierarquia da Igreja e, consequentemente, também a organização política e social vigente que contrastava com as novas nações-estado. O ideal universal, católico, entrava em direto confronto com as reivindicações de jurisdição de seus governantes \cite[p.252]{CAIRNS}.
+
+\subsection{REAÇÕES: CONTRARREFORMA E DESDOBRAMENTOS}
+As reações da Igreja Romana para lidar com a Reforma Protestante não devem ser vistas como propostas e ideias que surgem após as críticas dos reformadores, antes mesmo de Lutero já existiam movimentos renovadores dentro da Igreja Romana que, apesar de não chegarem a conclusões teológicas iguais aos reformadores, reconheciam e endereçavam problemas morais da Igreja que eram constantes e espalhados pela Europa. As iniciativas católicas a essa renovação traziam como característica justamente a renovação pessoal, seria pela renovação da espiritualidade católica que a renovação da Igreja, tão necessária, seria realizada. Para \citeonline[p.380]{LINDBERG}, até mesmo esse movimento era alvo da crítica luterana:
+
+\begin{citacao}
+É importante ressaltar que aquilo que o movimento de renovação católico inicialmente enxergava como uma virtude a ser inculcada e desenvolvida soava, para Lutero, como a própria coisa que precisava de reforma. [...] para o Reformador de Wittenberg, a única resposta do evangelho a uma piedade ineficaz baseada em mérito não era sua intensificação, mas sua abolição.
+\end{citacao}
+
+Também segundo \citeonline{LINDBERG}, em 1555 se inicia de forma institucional a contrarreforma com o novo papa Paulo IV. Sua rigidez dogmática centralizou o movimento de renovação católico em repressão, se utilizando da proibição de livros e a Inquisição. Proibiram-se desde livros humanistas utilizados amplamente nas universidades até mesmo edições da Bíblia e dos Pais da Igreja. Essa censura perdurou por décadas e não existe exatamente um consenso se a censura teve o efeito contrário do que se pretendia ou se foi bem sucedida. Independente de seus efeitos quanto a disseminação de ideias, a proibição gerava insumo jurídico para que inquisidores pudessem perseguir de forma legal protestantes.
+
+\section{EXPANSÃO PROTESTANTE E MOVIMENTOS DE AVIVAMENTO}
+Dada a resposta institucional e até persecutória ao protestantismo por parte da Igreja Romana em algumas regiões europeias durante o século XVI e início do século XVII, a preocupação dos reformadores se volta para a permanência das mudanças de paradigmas que foram iniciadas pelo movimento. Portanto, não houve um espaço significativo para um movimento missionário expressivo por parte dos protestantes, mas sim um esforço para a consolidação tanto de seus fundamentos e princípios teológicos quanto de suas novas igrejas de forma institucional. Temos, assim, um movimento plural e contextualizado de acordo com as necessidades de cada região que, mais tarde, frutificaram em tradições protestantes distintas: congregacionais, presbiterianos, batistas, luteranos dentre outras.
+
+Enquanto isso, a Europa desbravava o novo mundo com suas grandes navegações. Portugal e Espanha na vanguarda da exploração marítima, enviava expedições para o reconhecimento, conquista e contato com novas terras e povos. A Igreja Romana enxergou nessa empreitada uma oportunidade proselitista e organizou-se para enviar seus próprios pregadores para as Américas, principalmente na América Latina. Temos, assim, um cenário em justaposição de um catolicismo em expansão territorial e étnica e um protestantismo em processo de consolidação de sua perenidade teológica e institucional.
+
+\subsection{MISSIONARISMO E DIFUSÃO DO PROTESTANTISMO NOS SÉCULOS XVII A XIX}
+Na região que futuramente se tornaria os Estados Unidos da América, em contraste com praticamente todo o restante das Américas, as colônias inglesas em sua maioria eram compostas por protestantes das mais variadas vertentes. Por \citeonline{SHELLEY}, pela promessa de tolerância religiosa, estes grupos dissidentes do anglicanismo embarcaram rumo ao Novo Mundo, tais como os \emph{quakers} em direção a Pensilvânia e reformados holandeses para Nova York. Nota-se que este movimento de colonização não aconteceu em um único momento mas sim em um processo contínuo durante décadas.
+
+Ao mesmo tempo que esta migração acontecia, também houveram avanços nos campos filosóficos e sociológicos que marcaram profundamente os séculos XVII e XVIII: o iluminismo. Também denominado de racionalismo, temos agora o deslocamento do ser humano para fora do centro da crítica e observação e a inserção da própria racionalidade como foco. Obras como \emph{Discurso sobre o Método} de Descartes e \emph{Crítica da Razão Pura} de Kant moldaram o \emph{zeitgeist}\footnote{Pode-se traduzir o termo como "espírito da época", idealizado originalmente por Hegel em \emph{Filosofia da História} de 1837; descreve o conjunto de ideias, influências, comportamentos e crenças que caracterizam um determinado povo em uma determinada época.} experienciado tanto por protestantes quanto católicos na Europa e, pelo constante movimento migratório, pelas Américas.
+
+Com a chegada do iluminismo, como Shelley descreve, temos a substituição da fé pela razão:
+\begin{citacao}
+A preocupação do homem já não era mais a preparação para a próxima vida, mas a felicidade e a realização neste mundo: e a mente do homem, não sua fé, era o melhor guia para a felicidade — não as emoções, os mitos ou as superstições. \cite[p.205]{SHELLEY}
+\end{citacao}
+
+Neste cenário de um secularismo cada vez mais homogêneo tanto na academia quanto na própria vida ordinária, foi inevitável um esfriamento da fé européia. Também por \citeonline{SHELLEY}, a vida cristã já não era mais apenas sobre um relacionamento pessoal com Cristo mas sim uma questão de se associar publicamente à Igreja de seu estado. Estar presente em cultos e cumprir sacramentos eram agora sinais públicos de um bom cidadão que cumpre o contrato social imposto e não um desejo real de estar em comunhão com Deus. É diante desse cenário que temos o surgimento dos pietistas, primeiramente na Alemanha, como uma forte oposição a fé nominal do luteranismo alemão; e é através deles que teremos os primeiros grandes avivamentos pós Reforma acompanhados de uma grande força missionária.
+
+\subsubsection{Zinzendorf e os Morávios}
+Originários do movimento hussita, segundo \citeonline{SHELLEY}, os moravianos buscaram refúgio após uma forte supressão de sua igreja durante a Guerra dos Trinta Anos, e encontraram nas terras de Zinzendorf. Ao se assentarem e formarem a comunidade \emph{Herrnhut}, Zinzendorf também encontrou refúgio para sua espiritualidade nela. Vivendo numa espécie de monasticismo, onde anseavam em cultivar e construir uma cidade cristã livre, os moravianos e Zinzendorf se empenhavam em viver uma vida cristã piedosa e longe de tentações que a vida secular oferecia.
+
+Por \citeonline{SHELLEY}, Zinzendorf alguns anos depois se tornou o líder da Igreja moraviana e, durante um contato com um homem negro das Índias Ocidentais Dinamarquesas, reconheceu a necessidade do Evangelho aos povos escravizados e, no ano seguinte, passou a enviar missionários não apenas para São Tomás mas para diversas colônias onde haviam escravizados, como Groenlândia, Lapônia, Guiana da América do Sul dentre outras.
+
+\subsubsection{John Wesley e o Metodismo}
+Durante uma viagem de navio à Georgia, em missão como pastor anglicano, John Wesley teve seu contato com os irmãos morávios. Em uma fortíssima tempestade que até despedaçou a vela principal, enquanto ele temia por sua vida, Wesley narra a tranquilidade dos morávios:
+\begin{citacao}
+Os alemães, no entanto, cantaram calmamente. Mais tarde perguntei a um deles: “Você não estava com medo?” E ele respondeu: “Graças a Deus, não”. E eu perguntei: “Mas as mulheres e crianças não estavam com medo?” E ele respondeu, suavemente: “Não, nossas mulheres e crianças não estão com medo de morrer! \cite[p.17]{WESLEY}
+\end{citacao}
+
+Por \citeonline{WESLEY}, após cessar a tempestade, considerou este dia o mais glorioso de sua vida. Impressionado com a absoluta certeza da salvação que os irmãos morávios demonstraram e depois de diversos problemas e decepções em sua empreitada na Georgia, Wesley volta para Inglaterra em busca da mesma chama que mantiveram aqueles irmãos em plena paz no meio do caos. E, por \citeonline{SHELLEY}, Wesley tem seu coração aquecido por essa chama durante a leitura do prefácio de Lutero à \emph{Epístola aos Romanos}.
+
+Influenciado por Whitefield, seu colega e também pastor anglicano, passou a pregar ao ar livre. Suas pregações nas ruas, praças e até em minas de carvão surtiram um efeito missionário surpreendente e, em poucos anos se iniciou o movimento metodista. Apesar de resistir por muito tempo qualquer ruptura com a Igreja Anglicana, \citeonline{SHELLEY} narra que o descaso da Igreja Anglicana na Inglaterra com os crescentes pedidos de ministros ordenados em solo americano forçou Wesley a nomear ministros fora da Igreja Anglicana e, assim, criando a Igreja Metodista na América como uma nova denominação e distinta da Igreja Anglicana.
+
+\subsection{CONTRIBUIÇÕES DOUTRINÁRIAS DOS GRANDES AVIVAMENTOS}
+Podemos atribuir aos pietistas, como \citeonline{SHELLEY} descreve, a doutrina da regeneração como sua principal contribuição. Apesar de não a denominarem como doutrina mas sim como uma experiência necessária para ser de fato um cristão, acreditavam que a concretização de tudo que a Reforma propôs estava neste renascimento espiritual. Por Shelley:
+\begin{citacao}
+A maneira intensamente pessoal com que os pietistas descreviam a regeneração costumava transformar o cristianismo em um drama da alma humana: o coração do homem era o cenário de uma luta desesperadora entre os poderes do bem e do mal. \cite[p.218]{SHELLEY}
+\end{citacao}
+
+Aos metodistas, tanto na América quanto posteriormente na Inglaterra, segundo \citeonline{SHELLEY}, atribui-se a origem do cristianismo evangélico. Suas crenças não se diferiam das crenças puritanas: "(...) a pecaminosidade do homem, a morte expiatória de Cristo, a graça imerecida de Deus, a salvação do verdadeiro cristão." \cite[p.219]{SHELLEY} Mas essas similaridades se detinham nas doutrinas, dado que os metodistas não tinham as mesmas intenções políticas que os puritanos de criar uma comunidade ou sociedade bíblica, mas focavam primariamente na conversão dos perdidos.
+
+\subsection{INFLUÊNCIAS SOCIAIS, EDUCACIONAIS E POLÍTICAS}
+É no movimento metodista que temos o surgimento da Escola Dominical. Por \citeonline{DORNELLAS}, mesmo antes do avivamento metodista, John Wesley já indicava uma atenção especial às crianças, inclusive em seu trabalho missionário, por vezes mencionado como mal sucedido, na Geórgia. Com o intuito de trazer o ensinamento bíblico às crianças, o movimento metodista inaugura a Escola Dominical como um espaço de aprendizado completo: não apenas a Bíblia é ensinada na linguagem infantil mas também haviam aulas de alfabetização e até aritmética. Essa integralidade do ensino se deve primariamente aos esforços de Hannah Ball e Sophie Cooke:
+\begin{citacao}
+Olhando para as duas experiências de educação desenvolvidas por eles, vemos perspectivas comuns e significativas. Uma delas é o caráter popular da educação, isto é, uma educação direcionada às crianças pobres que não tinham acesso a ela; outra tem a ver com a educação das meninas. Posteriormente à iniciativa de Hanna Ball, muitas mulheres metodistas abriram escolas para meninas; as escolas dominicais contavam com professoras e professores leigos; a educação bíblica, religiosa era o fundamento destas escolas e, a partir delas se ensinava as crianças a lerem e a escreverem, bem como noções de aritmética. \cite{FERNANDES}
+\end{citacao}
+
+O movimento metodista, durante sua história, sempre esteve na vanguarda das lutas sociais e entendiam de forma muito clara a presença vicária de Cristo nos pobres, estrangeiros, órfãos, viúvas e prisioneiros, como Cristo ensina no capítulo 25 do evangelho segundo Mateus. Tanto John Wesley quando os metodistas que o seguiram, por \citeonline{DORNELLAS}, lutaram a favor da abolição da escravidão e, posteriormente, contra também as injustiças e explorações que os trabalhadores industriais sofreram por décadas sem nenhum direito trabalhista. O próprio Cartismo\footnote{Cartismo foi um movimento operário reformista da década de 1830 na Inglaterra, como resposta à exploração da classe operária inglesa. Apesar de não ter tido reformas políticas significativas durante o movimento, é através de seus membros que diversos outros movimentos reformistas surgiram e conseguiram reivindicar com sucesso diversos direitos para a classe trabalhadora.} teve influências metodistas em sua origem:
+\begin{citacao}
+Alguns wesleyanos rebeldes, outros wesleyanos expulsos, metodistas primitivos, metodistas secessionistas e ex-metodistas tiveram papéis marcantes no Cartismo nas regiões de South Lancashire, West Riding, o nordeste, Staffordshire, Leicestershire, e Nottinghamshire. Os antecedentes e futuras carreiras desses homens eram tão diversos quanto o próprio Cartismo, mas eles trouxeram consigo sinceridade moral, disciplina, habilidades organizacionais e de oratória que os lançaram em posição de liderança. \cite[p.106, tradução nossa]{HEMPTON}
+\end{citacao}
+
+\section{PROTESTANTISMO NA AMÉRICA LATINA E O CASO BRASILEIRO}
+\subsection{IMPLANTAÇÃO HISTÓRICA NO BRASIL E SUAS DENOMINAÇÕES}
+A consolidação e desenvolvimento do protestantismo no Brasil se deu primeiramente com a chegada de Robert Kalley e os congregacionais em 1855, cujo trabalho junto da corte imperial brasileira abriu as portas para a vinda dos presbiterianos, batistas e metodistas. Segundo \citeonline{CAIRNS}, suas publicações em jornais seculares lidos pela elite brasileira e aproximação com a corte foram decisivos para a mudança de lei de liberdade de culto e uma separação entre Igreja e Estado mais decisiva. É também Robert Kalley que funda a primeira igreja protestante brasileira para brasileiros: a Igreja Congregacional no Brasil.
+
+O presbiterianismo desembarca no Brasil através de Ashbel Green Simonton, vindo dos Estados Unidos em 1859. Foi em Brotas e no Rio de Janeiro onde o presbiterianismo conseguiu se enraizar: "Brotas tinha 60 membros em comunhão completa [...]. No Rio, quatro anos após os primeiros batismos, a igreja presbiteriana possuía também 60 comungantes." \cite[p.416]{CAIRNS} Em 1880, com o reverendo e missionário John Boyle, a expansão do presbiterianismo se deu em nível nacional.
+
+Já os batistas, segundo \citeonline{CAIRNS}, dependeu do incansável trabalho missionário de William Bagby, a partir de 1881, que se expandiu de Salvador por todo nordeste e sudeste do Brasil. Parte do crescimento Batista também foi alavancado por ondas de imigrantes, como os letões que primeiro fugiram da opressão político-religiosa em sua pátria e posteriormente os que fugiam da Primeira Guerra Mundial.
+\subsection{CARACTERÍSTICAS DO PROTESTANTISMO LATINO-AMERICANO}
+O protestantismo latino-americano, mais especificamente o brasileiro, na sua consolidação se assemelhou a forma de vida puritana comum de seus percursores congregacionais, presbiterianos e batistas. Por Cairns:
+\begin{citacao}
+Os protestantes que trouxeram o evangelho à América Latina transmitiram uma forma de cristianismo dogmática, puritana e, num certo sentido, legalista. Tratava-se de um cristianismo que exigia uma decisão transformadora do estil ode vida, envolvendo inúmeras implicações éticas e sociais. \cite[p.425]{CAIRNS}
+\end{citacao}
+
+Também segundo \citeonline{CAIRNS}, o protestantismo latino-americano trouxe uma forma singular de formação de comunidade, realizando cultos com liturgias espontâneas e livres, em locais alternativos como restaurantes, praças, residências. Essa liberdade que se diferenciou bastante da forma católica presente, deu ao protestantismo uma mobilidade social e geográfica que foi duramente combatida pelo Catolicismo. Essa adversariedade do catolicismo junto com a eclesiologia que foi introduzida pelos primeiros missionários, temos a consolidação das igrejas protestantes de forma alienada da sociedade:
+\begin{citacao}
+Ao mesmo tempo em que as igrejas recém-formadas se libertaram de suas restrições socioeconômicas, elas desenvolveram o que pode ser chamado de mentalidade de gueto, tendendo a alienar-se da sociedade em geral. Esse abandono da sociedade foi o resultado natural da eclesiologia introduzida pelos missionários; um tipo de filiação regenerada à Igreja, em que é feita uma clara distinção entre a Igreja e o mundo. \cite[p.425]{CAIRNS}
+\end{citacao}
+
+Apesar desta alienação existir, ela não significa uma separação completa da vida na Igreja e a vida na sociedade. Por \citeonline{CAIRNS}, o protestantismo latino-americano do século XIX foi importantíssimo em avanços da educação e medicina, diversas obras pietistas como berçários, orfanatos, escolas foram fundados e também contribuiu nas formas constitucionais de diversas repúblicas latinas.
+\subsection{FENÔMENO PENTECOSTAL E NEO-PENTECOSTAL NA CONTEMPORANEIDADE}
+ \citeonline{FERREIRA} propõe dividir o movimento pentecostal no Brasil em quatro grupos. O primeiro grupo é o que de fato traz o pentecostalismo ao Brasil, a partir do trabalho missionário de Luigi Francescon, que funda a Congregação Cristã em 1910. No ano seguinte temos a Assembléia de Deus no Brasil criada a partir de uma divisão causada por dois missionários batistas: Gunnar Vingren e Daniel Berg. Este grupo é fortemente influenciado no avivamento da Rua Azusa nos Estados Unidos, que tem na manifestação dos dons do Espírito Santo, como o falar em línguas, seu aspecto doutrinário mais característico.
+
+ O segundo grupo, datado a partir de 1950, seriam os pentecostais que buscariam a cura miraculosa como objetivo central em seus cultos, além de exorcismos. Seus principais representantes são a Igreja do Evangelho Quadrangular, Brasil Para Cristo e a Igreja de Nova Vida.
+
+ O terceiro grupo, em meados da década de 1960, não seria fruto missionário de pentecostais fundando ou criando novas igrejas mas igrejas que já existiam, como luteranos, presbiterianos, metodistas e batistas que buscaram essa renovação carismática em suas próprias comunidades. Essa busca, em muitas denominações tradicionais, terminaram em divisões onde novas igrejas foram criadas, como a Igreja Cristã Maranata e a Igreja Presbiteriana Renovada do Brasil.
+
+ E, por fim, temos o quarto grupo que denominou-se como neopentecostais, surgindo na década de 1980. Neste grupo temos igrejas como a Igreja Universal do Reino de Deus, Igreja Mundial do Poder de Deus, entre outras. Neste grupo temos uma ênfase fortíssima nas manifestações de sinais, milagres, exorcismos e duas inovações teológicas: a teologia da prosperidade e o estado constante de "guerra espiritual" que o crente está. Seus cultos se afastam de qualquer semelhança de uma liturgia tradicional e são recheados de momentos com apelos emocionais fortes e fenômenos místicos.
+ \begin{citacao}
+ A ênfase destes grupos recai principalmente no forte uso dos meios de comunicação e no ensino da teologia da prosperidade, a cura divina, a utilização de objetos “ungidos” e, particularmente, a noção de que o mal é resultado da atuação direta dos demônios. O “dom de línguas” perdeu sua importância nas igrejas neopentecostais. Nos últimos anos, relatos dos fiéis falam de “sopro” do Espírito Santo, “desmaios” pelo poder do Espírito, “arrebatamentos” (que envolvem viagens ao céu e ao inferno), recebimento de “dentes de ouro” e o “dom do riso”. \cite[p.162]{FERREIRA}
+ \end{citacao}
+
+% \section{CONSIDERAÇÕES FINAIS}
+
+
+% CONSIDERAÇÕES FINAIS
+% • Síntese das principais ideias apresentadas.
+% • Reflexão crítica sobre o papel do protestantismo na sociedade atual.
+% • Possíveis desdobramentos futuros e desafios
+\pagebreak
+\noindent Declaração\linebreak Eu, Gabriel Cardoso dos Santos Faleiro, declaro que produzi este texto de maneira íntegra e original, sem recorrer ao plágio ou ao uso de inteligência artificial para sua criação. Todas as ideias, argumentos e referências foram desenvolvidos de forma honesta, garantindo que o conteúdo reflita exclusivamente meu próprio raciocínio e pesquisa.
+% ----------------------------------------------------------
+
+\pagebreak
+\renewcommand{\bibname}{{REFER\^ENCIAS}}
+\bibliographystyle{abntex2-alf}
+\bibliography{hi2_entrega_03.bib}
+
+\end{document}
