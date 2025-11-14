@@ -1,0 +1,294 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{ANTIGO TESTAMENTO 2: PROFETAS E ESCRITOS \\ ENTREGA 1}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2025}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{ENTREGA 1}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Antigo Testamento 2: Profetas e Escritos, solicitado pela profa. Dra. Marisa Furlan.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico},
+		hidelinks=true,
+		% colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    \center
+    \ABNTEXchapterfont\large\imprimirinstituicao
+
+    \ABNTEXchapterfont\large\imprimirautor
+
+    \vfill
+    \begin{center}
+    \ABNTEXchapterfont\bfseries\large\imprimirtitulo
+    \end{center}
+    \vfill
+
+    \large\imprimirlocal %<<<<<<<<<<<mude
+
+    \large\imprimirdata %<<<<<<<< mude
+
+    \vspace*{1cm}
+  \end{capa}
+}
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+% TEMA: A BÍBLIA HEBRAICA COMO LITERATURA E DOCUMENTO HISTÓRICO: ANÁLISE
+% DOS GÊNEROS LITERÁRIOS, DESENVOLVIMENTO CANÔNICO E MENSAGEM
+% TEOLÓGICA DOS ESCRITOS DO ANTIGO ISRAEL
+
+% INTRODUÇÃO
+% Apresente o tema da Bíblia Hebraica como objeto de estudo literário, histórico e
+% teológico. Justifique a relevância da abordagem multidisciplinar, destacando como os
+% gêneros literários, o desenvolvimento canônico e a mensagem teológica revelam
+% aspectos centrais da cultura e espiritualidade do Antigo Israel. Delimite os objetivos do
+% artigo e, se necessário, indique a metodologia utilizada. Finalize com uma breve
+% descrição da estrutura do texto.
+\section{INTRODUÇÃO}
+Este trabalho tem como objetivo expor um panorama da Bíblia Hebraica como objeto de estudo literário, histórico e teológico. Através do entendimento dos gêneros literários dos textos que compõe a Bíblia Hebraica, da reconstrução do contexto histórico durante a escrita e edição destes textos e da leitura de sua mensagem teológica acessaremos aos aspectos centrais da cultura e espiritualidade do Antigo Israel. Se torna, assim, mais profunda a compreensão da Bíblia Hebraica como literatura, documento histórico e Revelação.
+
+O texto será dividido em três partes: análise dos gêneros literários, desenvolvimento canônico e a mensagem teológica somada com a relevância história dos escritos.
+
+\section{ANÁLISE DOS GÊNEROS LITERÁRIOS DA BÍBLIA HEBRAICA}
+\citeonline{CEIA} define gênero literário como a maneira de classificar textos literários, dependendo de agrupamentos de acordo com as similaridades de suas qualidades formais e conceituais. Esta classificação se dá por categorias históricas que são descritas por códigos estéticos, ou seja, a forma de se expressar textualmente de um gênero literário está fortemente conectada com a tradição, memória e experiência relatada tanto no texto quanto no contexto da produção do texto.
+
+Desta forma, encontramos os gêneros literários descritos abaixo na Bíblia Hebraica que, através de sua formação estética, formam um mosaico literário de narrativas, poesias, profecias, legislações e sabedorias que apontam para porções da tradição, cultura, política e teologia do povo de Israel.
+
+\subsection{NARRATIVO}
+O gênero narrativo é encontrado em livros como Gênesis, Êxodo, Josué, Juízes, dentre outros. \citeonline{FOHRER} subdividem o gênero em cinco categorias: mito, conto, novela, anedota e lenda ou saga. Apesar desta sistematização e categorização para melhor entendimento, \citeonline{FOHRER} admite que não é possível traçar uma distinção de forma rigorosa entre uma ou outra subdivisão proposta.
+
+São nestes livros que encontraremos os textos que, como seu gênero sugere, narram histórias. Estas histórias podem ter como objetivo a transmissão de informação quanto a um acontecimento envolvendo personagens e situações que o texto apresenta como reais (anedotas)\footnote{Por \citeonline{FOHRER}, temos algumas narrativas de Sansão classificadas como anedotas, como quando arrancou os batentes da porta de Gaza (Jz 15.1).}, expressar uma sabedoria ou conhecimento através de histórias humanas e terrenas com pitadas de fantasia (contos)\footnote{Por \citeonline{FOHRER}, classifica-se como um conto a história da panela de farinha e ânfora de óleo que não se esgotavam (1Rs 17.16, 2Rs 4.15).}, dar respostas a perguntas sobre a origem de determinada experiência ou fenômeno existencial com narrativas sobre o divino e o cosmos (mito)\footnote{No primeiro capítulo de Gênesis, por \citeonline{FOHRER}, temos um exemplo de mito fundacional.}, relatar histórias de acontecimentos passados que sugerem verdades ou fenômenos universais (novelas)\footnote{\citeonline{FOHRER} mencionam o livro de Jó e Rute como novelas.} e, por fim, explicar tanto a origem do povo de Israel quanto as origens e motivos da existência de outros povos (sagas e lendas)\footnote{\citeonline{FOHRER} destrincham as sagas e lendas em seis tipos diferentes nas páginas 130 até 134. Alguns exemplos seriam as sagas heróicas que afirmam Israel como um povo legítimo em Canaã, como as histórias de Josué, Saul, Davi dentre outros.}.
+
+\subsection{POÉTICO}
+
+O gênero poético é encontrado em livros como Salmos, Cantares; fragmentos em livros diversos como Gênesis, Êxodo, entre outros. \citeonline{FOHRER} encontram rimas, rimas internas, aliterações, assonâncias vocais ou consonantais, anacruses e antifonias como recursos utilizados pelos autores da Bíblia Hebraica. Sua categorização, portanto, se dá principalmente na forma que o texto é apresentado; e esta apresentação pode acontecer tanto de forma clara, como no caso dos livros de Salmos que colecionam canções e poesias, quanto no decorrer de textos cujo gênero não é explicitamente poético mas que se utiliza do recurso poético, como no primeiro capítulo de Gênesis. A poesia hebraica também está intimamente ligada a idéia de inspiração divina:
+
+\begin{citacao}
+Poesia, com efeito, não é apenas uma determinada forma de arte, mas é considerada originariamente como distintivo da inspiração, do trato com o mundo sobrenatura. A forma poética confere, por sua vez, à palavra falada uma autoridade e uma virtude, como aquela que se acredita residir, p.ex., na maldição e na bênção. É como se um profeta, afirmando pregar em nome de Javé, ou um mestre de sabedoria, pretendendo transmitir um conhecimento ou uma regra de vida que Deus ou os pais lhe comunicaram, só pudessem encontrar audiência, se revestissem suas palavras com roupagem métrica e rítmica. \cite[p.62]{FOHRER}
+\end{citacao}
+
+\subsection{PROFÉTICO}
+O gênero profético, por sua vez, é encontrado em livros como Daniel, Ezequiel, Isaías, Jeremias, Amós, Ageu, entre outros. \citeonline{FOHRER} dividem o gênero profético em três subgêneros: oráculos proféticos, relatos proféticos e modos copiados de outros lugares.
+
+Oráculo profético, por Fohrer: "[...] quer comunicar a vontade de Javé tal qual se faz sentir em ordem à preparação do futuro, como decorrência da presente situação existencial do homem." \cite[p.498]{FOHRER}, ou seja, sua intenção não é exatamente prever o futuro mas alterar o presente a partir da ameaça de justiça ou juízo futuro. Em Isaías 3:1-9 e Isaías 3:16-24 temos um exemplo de ameaça acompanhada de justificação.
+
+Já o relato profético pode ser comparado ao que comumente entendemos por uma vidência: o profeta relata o que ele ouviu ou viu de forma sobrenatural. \citeonline{FOHRER} separam estes relatos entre: visões, audições, visões e audições vinculados entre si e relatos de ações simbólicas. Estes relatos costumam vir acompanhados de explicações que guiam sua interpretação, como Ezequiel 12:1-11.
+
+Por fim, diversos modos de falar que não se encaixam perfeitamente entre um oráculo ou relato também foram utilizados pelos profetas para transmitirem sua mensagem, como hinos, cânticos de escárnio ou fúnebres e também modos emprestados de outros gêneros literários:
+\begin{citacao}
+Do âmbito da vida comum foram assimilados e imitados, p.ex.: o cântico de amor, o cântico de escárnio e o cântico fúnebre [...], Do âmbito cultual foram assumidos e copiados: o estilo hínico e os hinos, o cântico de lamentação (§ 39), a convocação a celebrar as lamentações, a torá sacerdotal (§ 10,3), o oráculo cultual, e ainda a liturgia dos profetas do culto [...]; Do âmbito da doutrina sapiencial derivam os modos correspondentes de falar (§ 47); do âmbito da narrativa histórica provém o modo profético de considerar a história (p.ex. Am 4.-12; Is 9.7-20+5.25-29); e do âmbito da vida jurídica procede o oráculo profético de julgamento. \cite[p.503-504]{FOHRER}
+\end{citacao} 
+
+\subsection{SAPIENCIAL}
+O gênero sapiencial é representado por livros como Provérbios e Eclesiastes. \citeonline{FOHRER} denotam que a literatura sapiencial na sua forma elementar é o aforismo enquanto provérbio ou sentença. Ou seja, frases curtas que expressam uma verdade ou preceito moral com objetivo didático. Dentro deste gênero, por \citeonline{FOHRER}, divide-se entre provérbios, provérbios enigmáticos e numéricos, sentenças, poesias sapienciais, parábolas e listas.
+
+Os provérbios "exprimem experiências humanas de caráter universal" \cite[p.435]{FOHRER}, como exemplo temos Ec 9:4. Apesar da predominância da forma poética, muitos provérbios também foram escritos em prosa. O provérbio enigmático, como seu nome sugere, exprime um segredo e sua solução, e costuma estar ligado com o sobrenatural ou sobre-humano: "[o provérbio enigmático] justifica o segredo da existência de um ser sobre-humano (como, p.ex., o da esfinge), ou, em geral, indica a presença de um poder oculto, cuja essência penetra aquele que resolve o enigma" \cite[p.436]{FOHRER}. Os numéricos, por sua vez, como exemplificado em Pr 6:16-19, traz enumerações de séries de objetos acompanhados de um número que cresce monotonicamente em conjunto com os objetos sendo descritos. Por \citeonline{FOHRER}, acredita-se que esse tipo de provérbio tenha se originado de provérbios enigmáticos para servir de recurso didático da sabedoria.
+
+\subsection{LEGAL}
+Por último, o gênero legal está presente primariamente no Pentateuco, com Levítico e Deuteronômio sendo os dois principais livros com códigos legais. Estes textos costumam buscar a consolidação de códigos tanto de conduta cívica quanto sacramental. Em Levítico, por exemplo, teremos diversos códigos acerca da conduta sacerdotal e descrições de rituais; já em Deuteronômio podemos observar códigos legais que mediam relacionamentos econômicos ou sociais entre hebreus e entre hebreus e gentios. Por Fohrer:
+\begin{citacao}
+(...) o AT não contém nenhuma obra legal sistematicamente estruturada, mas somente coletâneas e códigos legais onde a seleção do material dá a impressão, à primeira vista, de ter sido feita ao acaso, quando, no entanto, foi condicionada provavelmente, como ocorria em todo o Antigo Oriente, pela finalidade e pelos objetivos visados com as coleções. \cite[p.187]{FOHRER}
+\end{citacao}
+Ou seja, apesar de existir extensos textos legais em que é possível delimitar os contextos de cada texto, como em direito quotidiano e direito religioso\footnote{Por Fohrer: "Nesse estudo, as coleções do direito quotidiano ("profano" ou "civil" e "social") e do direito religioso devem receber igual tratamento. Embora existam diferenças fundamentais entre os conteúdos desses dois tipos de direito, os mesmos se acham interligados e se completam." \cite[p.187]{FOHRER}} de forma separada e autônoma, o fato de terem sido incorporados de forma intencional no Pentateuco os tornam interligados o suficiente para que sejam considerados não-autônomos: "A maior parte das coleções de leis e dos códigos jurídicos, originariamente autônomos em sua totalidade, foram incorporados aos "estratos fontes" do Pentateuco e a partir daí devem ser considerados como não-autônomos." \cite[p.187]{FOHRER}
+
+\subsection{FUNÇÃO TEOLÓGICA E CULTURAL}
+Entendendo a pluralidade dos gêneros literários contidos no Antigo Testamento e suas distinções entre forma, estética e intencionalidade, munindo-se de seus contextos históricos, podemos enxergar o movimento pendular constante de influência entre o texto e a cultura hebraica que o cercava em sua redação e edição.
+
+O gênero narrativo, dessa forma, se comporta como o meio de enunciar a religião de Javé e de Israel: "Aquilo que constitui sua força de repercussão não são lembranças de fatos do passado, mas a convicção de que existe uma relação contínua entre Deus e o homem" \cite[p.135]{FOHRER}. Ou seja, como \citeonline{FOHRER} explicitam, os primeiros narradores das sagas, novelas, mitos e contos não tinham a intenção de expor uma história com credibilidade histórica na mesma pretensão moderna que temos; antes, sua intenção é a de descrever as relações entre Javé e seu povo, justificando assim as pretensões dos hebreus e de Israel quanto a terra de Canaã, quanto a sua auto-afirmação como um povo distinto e também quanto a sua forma e prática de culto.
+
+O gênero poético, por sua vez, se mescla com outros gêneros como o profético e sapiencial trazendo a estética textual que aponta para a inspiração divina contida tanto no chamado ao arrependimento do profeta como da sabedoria transcendental do autor:
+\begin{citacao}
+É como se um profeta, afirmando pregar em nome de Javé, ou um mestre de sabedoria, pretendendo transmitir um conhecimento ou uma regra de vida que Deus ou os pais lhe comunicaram, só pudessem encontrar audiência, se revestissem suas palavras com roupagem métrica e rítmica. \cite[p.62]{FOHRER}
+\end{citacao}
+Além disso, é pela forma poética utilizada pelos textos hebraicos ser próxima da forma de outros povos que "Israel se situa dentro de uma tradição generalizada em todo o Antigo Oriente" \cite[p.62]{FOHRER}, ou seja, o empréstimo que os israelitas fazem das regras estilísticas da poesia que eram comuns em sua região confirmam que Israel participou na produção cultural de forma ativa na região Sírio-Palestina.
+
+
+% profeticos -> fohrer p.504+
+
+% 1. ANÁLISE DOS GÊNEROS LITERÁRIOS DA BÍBLIA HEBRAICA
+% ● Classificação dos gêneros:
+% 	○ Narrativo: textos históricos e fundacionais (Gênesis, Êxodo, Josué).
+% 	○ Poético: expressão estética e espiritual (Salmos, Lamentações).
+% 	○ Profético: denúncia e esperança (Isaías, Jeremias, Amós).
+% 	○ Sapiencial: reflexão filosófica e ética (Provérbios, Eclesiastes, Jó).
+% 	○ Legal: normas e identidade comunitária (Levítico, Deuteronômio).
+% ● Função teológica e cultural:
+% 	○ Como cada gênero contribui para a formação da identidade religiosa e
+% social do povo de Israel.
+% 	○ Relação entre forma literária e conteúdo teológico.
+
+% 2. DESENVOLVIMENTO CANÔNICO E TRANSMISSÃO DOS TEXTOS
+% ● Formação do cânon hebraico:
+% 	○ Estrutura tripartida: Torá, Nevi’im, Ketuvim.
+% 	○ Debates sobre datas, critérios de inclusão e exclusão.
+% ● Manuscritos e versões:
+% 	○ Manuscritos do Mar Morto e sua importância.
+% 	○ Versões antigas: Texto Massorético, Septuaginta, Peshitta.
+% ● Critérios de autoridade:
+% 	○ Inspiração divina, uso litúrgico, tradição comunitária.
+
+\pagebreak
+\section{DECLARAÇÃO DE INTEGRIDADE ACADÊMICA}
+Eu, Gabriel Cardoso dos Santos Faleiro, declaro que produzi este texto de maneira íntegra e original, sem recorrer ao plágio ou ao uso de inteligência artificial para sua criação. Todas as ideias, argumentos e referências foram desenvolvidos de forma honesta, garantindo que o conteúdo reflita exclusivamente meu próprio raciocínio e pesquisa.
+% ----------------------------------------------------------
+
+\pagebreak
+\renewcommand{\bibname}{{REFER\^ENCIAS}}
+\bibliographystyle{abntex2-alf}
+\bibliography{at2_entrega_01.bib}
+
+\end{document}

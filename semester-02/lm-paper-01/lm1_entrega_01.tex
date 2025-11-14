@@ -1,0 +1,222 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{LIDERANÇA E MINISTÉRIO \\ ENTREGA 1}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2025}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{ENTREGA 1}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Liderança e Ministério: Profetas e Escritos, solicitado pelo prof. José Januário da Silva Filho}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico},
+		hidelinks=true,
+		% colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    \center
+    \ABNTEXchapterfont\large\imprimirinstituicao
+
+    \ABNTEXchapterfont\large\imprimirautor
+
+    \vfill
+    \begin{center}
+    \ABNTEXchapterfont\bfseries\large\imprimirtitulo
+    \end{center}
+    \vfill
+
+    \large\imprimirlocal %<<<<<<<<<<<mude
+
+    \large\imprimirdata %<<<<<<<< mude
+
+    \vspace*{1cm}
+  \end{capa}
+}
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+% Entrega 1 - Em uma página, faça uma comparação entre os modelos de liderança do mundo corporativo em vigor no mundo atual e o modelo de liderança ensinado e vivido por Jesus, descrevendo pelo menos Três grandes contrastes entre eles. 
+
+\section{LIDERANÇA CORPORATIVA E A LIDERANÇA CRISTÃ}
+Existem alguns modelos de liderança corporativa que disputam espaço em palestras de \emph{coaches}\footnote{Aqui delimitaremos o \emph{coach} como o papel exercido por alguém em um trabalho de desenvolvimento pessoal de outras pessoas, desenvolvimento que na maioria das vezes se enquadra na esfera profissional; apesar de normalmente ser um trabalho vendido como holístico.} brasileiros que prometem, através da mudança comportamental do líder, transformar seus liderados para aumentar o faturamento de seu negócio ou empresa. A lógica por trás da promessa é: o trabalho que gera resultado para a empresa vem de seus liderados e estes são reflexo de seu líder, portanto, através do exercício da liderança é possível ter resultados positivos ou melhores pelo aperfeiçoamento da forma de liderar\footnote{Tangenciando o tema deste texto, existem algumas perguntas pertinentes contra esta lógica: qual o limite da atuação individual de cada liderado e do líder no resultado de um negócio? Todas as relações econômicas que essa empresa exerce na sociedade realmente dependem exclusivamente do engajamento e \emph{mindset} de seus trabalhadores e líderes?}. Assim, através da imputação dessa responsabilidade no comportamento do líder e de seus liderados, \emph{coaches} lotam auditórios de pessoas, muitas vezes desesperadas, em busca de uma solução ou melhoria para sua vida financeira.
+
+O primeiro desses modelos, um dos mais tradicionais e cada vez mais fora de moda é o modelo militaresco. O líder personifica um capitão de um exército, onde seus liderados são vistos como soldados que precisam obedecer a hierarquia de comando. A autoridade conferida ao líder se dá exclusivamente pela sua posição hierárquica superior e é devida a obediência de qualquer pessoa em posição inferior. Vemos exemplos desse tipo de liderança autocrática em empresas mais tradicionais e antigas, mas a influência dessa forma de governância se estende até para organizações evangélicas que prometem, nos mesmos moldes corporativos, a melhoria na vida familiar através da transformação do homem em um líder militar\footnote{Um bom exemplo recente é o Movimento Legendários, que se aproveita tanto da estética militar quanto da forma de governância hierárquica provinda também da cultura militaresca. O Movimento parte de pressupostos dependentes de uma leitura bíblica acerca do papel do homem no casamento que imputa, no homem, uma liderança autocrática dentro da família; a conferência da autoridade se dá pela hierarquia e essa hierarquia é baseada em apenas seu gênero. Como toda governância autocrática, a autoridade é conferida por uma arbitrariedade e portanto, o poder do líder deve ser demonstrado a todo momento para que não o perca. A solução militaresca com palavras de ordem, estética de combatente e comandos diretos que demandam o obedecimento imediato se torna eficaz nessa forma de liderança.}.
+
+Outro exemplo é o modelo que prioriza a construção de relacionamentos e, através dessas relações, exercer influência em seus liderados para que eles façam o que você deseja ou precisa. Livros como \emph{Como Fazer Amigos e Influenciar Pessoas} do Dale Carnegie ou \emph{Liderar é Influenciar} do John C. Maxwell são bons exemplos da tese. Essa forma de liderança vai se aliar a táticas de manipulação sentimental e emocional, muitas vezes com roupagem de estudos psicológicos e em alguns casos até com misticismo\footnote{A deturpação do termo físico \emph{quântico} como algo místico é extremamente comum nesse meio, onde ressignificam a mecânica quântica para algo análogo a magia. Mais em: https://www.gov.br/cbpf/pt-br/assuntos/noticias/teorico-do-cbpf-critica-em-entrevista-a-cbn-o-chamado-coach-quantico}, exercidas em seus liderados para que o líder atinja seus resultados esperados. Essa abordagem, apesar de menos violenta na estética e no linguajar, ainda busca o exercício de poder pleno do líder (o influente) ao liderado (o influenciado). Troca-se a jaqueta camuflada por uma camiseta, as palavras de ordem por pedidos sutis e sorrisos, mas a mesma intencionalidade hierárquica.
+
+Cristo, por sua vez, não se compara a um capitão de um exército ou a um carismático influenciador de pessoas; a figura escolhida pelo Messias é a de um pastor. Um pastor, no contexto bíblico, exerce primariamente a função de cuidar, guiar e ser entendido como um porto seguro para um rebanho. O cuidado se dá tanto pelas necessidades básicas, como água e comida, quanto na defesa de predadores ou acidentes; guiar sendo o primeiro da fila que conduz o rebanho ao pasto e de volta ao aprisco e porto seguro como quem o rebanho pode se aproximar e se sentir protegido de ameaças. Temos em Cristo a subversão dos moldes de liderança corporativos: as palavras de ordem e autoridade exercida por hierarquia dão espaço para o pastor que abre o caminho até o pasto na frente do rebanho, o carisma para manipulação emocional ou sentimental são substituídos pela sensação de segurança provinda do cuidado direto do pastor.
+
+A liderança exercida por Cristo, exemplificada em todos os evangelhos, é portanto uma liderança baseada em serviço em prol de seus discípulos e seguidores. Logo após uma discussão tola sobre quem seria o discípulo mais importante ou menos importante no Reino vindouro, Cristo traz uma bacia de água e toalha e lava os pés de cada um de seus discípulos. Cristo exercendo o serviço que era reservado a escravos aos seus liderados, instaura a práxis exemplificada na analogia do pastor e rebanho: o verdadeiro líder não é o que tem seus pés lavados por outro, mas o que se submete a lavar os pés de seus liderados. 
+
+Portanto, em uma liderança ministerial cristã, a vocação do líder se dá para que ele sirva de exemplo da práxis esperada naquele ministério. O trabalho requerido de seus liderados é, com exatidão, o próprio trabalho exercido pelo líder. Em outras palavras, da mesma forma que o maior no Reino é o primeiro servo, o líder também é o primeiro liderado.
+
+
+% modelo 1: militaresco, capitão de exército, manda quem pode obedece quem tem juízo, a autoridade confere o poder e o poder confere a autoridade
+
+% modelo 2: cooperativo até a segunda página, a tentativa de se demonstrar presente não como um chefe mas como uma pessoa relacionável o suficiente para influenciar as pessoas a fazerem o que você quer, não pela autoridade mas por exercício de influência pessoal
+
+% modelo 3: 
+
+\pagebreak
+\section{DECLARAÇÃO DE INTEGRIDADE ACADÊMICA}
+Eu, Gabriel Cardoso dos Santos Faleiro, declaro que produzi este texto de maneira íntegra e original, sem recorrer ao plágio ou ao uso de inteligência artificial para sua criação. Todas as ideias, argumentos e referências foram desenvolvidos de forma honesta, garantindo que o conteúdo reflita exclusivamente meu próprio raciocínio e pesquisa.
+% ----------------------------------------------------------
+
+\pagebreak
+\renewcommand{\bibname}{{REFER\^ENCIAS}}
+\bibliographystyle{abntex2-alf}
+\bibliography{at2_entrega_01.bib}
+
+\end{document}
