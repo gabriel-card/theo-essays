@@ -1,0 +1,243 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{ÉTICA E CIDADANIA \\ ENTREGA 1}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2025}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{ENTREGA 2}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Ética e Cidadania, solicitado pelo prof. Dr. Elias Bartolomeu Binja}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico},
+		hidelinks=true,
+		% colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    \center
+    \ABNTEXchapterfont\large\imprimirinstituicao
+
+    \ABNTEXchapterfont\large\imprimirautor
+
+    \vfill
+    \begin{center}
+    \ABNTEXchapterfont\bfseries\large\imprimirtitulo
+    \end{center}
+    \vfill
+
+    \large\imprimirlocal %<<<<<<<<<<<mude
+
+    \large\imprimirdata %<<<<<<<< mude
+
+    \vspace*{1cm}
+  \end{capa}
+}
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+\section{INTRODUÇÃO}
+Este trabalho se propõe a discutir o avanço das ciências e seus impactos na vida no planeta, refletindo quanto a continuidade indefinida da vida pode impactar tanto materialmente quanto eticamente a sociedade em geral.
+% INTRODUÇÃO
+% Apresentação do tema: o avanço das ciências e seus impactos na vida no planeta.
+% Problematização: até que ponto o desenvolvimento científico garante ou ameaça a continuidade da vida?
+% Objetivo: refletir sobre os riscos e responsabilidades éticas diante do progresso científico.
+
+\section{O DESENVOLVIMENTO DAS CIÊNCIAS}
+A busca pela longevidade e retorno a jovialidade perpassa pela história da humanidade. A idéia de vida eterna é central em diversas civilizações, com mitos e contos de elixires, plantas miraculosas ou poções mágicas que concederiam ao usuário a continuidade de sua vida eternamente. Abandonando os mitos e mística, se apossando da ciência e do estudo da natureza por métodos racionais, o homem moderno não deixou de se preocupar e almejar essa eternidade. Os avanços tecnológicos e científicos em ramos como a medicina, biologia e engenharia, possibilitaram diversos ganhos importantíssimos que alavancaram a expectativa de vida de uma pessoa em quase o dobro se comparado com a Idade Média ou anterior.
+
+Apesar de ganhos incríveis e sem precendentes com invenções de antibióticos como a penicilina, vacinas e antivirais, aparatos mecânicos que permitem um humano respirar e se curar de uma doença que outrora o mataria; a contemporaneidade se vê diante de um cenário onde os avanços não aumentam a expectativa de vida como anteriormente. Tomando emprestado um termo econômico, temos uma aplicação da lei dos rendimentos decrescentes\footnote{Termo utilizado para descrever o processo de diminuição da taxa de produção de um processo a medida que se continua aumentando o investimento neste mesmo processo.}: quanto mais estudamos, entendemos e avançamos na complexidade tecnológica, menos impacto observável na quantidade de tempo de vida que um humano espera possuir.
+
+Diante deste cenário, temos o crescimento de empreendimentos cada vez mais ambiciosos por partes de magnatas que não mais buscam curas e tratamentos para doenças reais mas que entendem a velhice e a morte natural como a doença a ser combatida. Essa noção é facilmente encontrada em seus próprios manifestos públicos:
+\begin{citacao}
+\emph{Devemos mudar a perspectiva da humanidade quanto ao envelhecimento}
+
+Como o autor e naturalista Pierre-Jules Renard observa, "Não é uma questão de quão velho você é, mas uma questão de como você ficou velho". Nós estendemos nossa expectativa de vida, mas vemos um aumento de degeneração e doenças, bem estar erodido, minando a oportunidade de aproveitar completamente nossas vidas longas.
+(...)
+Se estendermos não apenas a nossa expectativa de vida, mas a "expectativa de saúde" - a porção total da vida humana que é bem vivida, produtivamente, e livre de doenças - então é bem possível imaginar um futuro coletivo como espécie bem diferente (...) \cite{BEZOS}
+\end{citacao}
+
+Se torna necessário, portanto, levantar questões por trás desta postura: é realmente possível entender o envelhecimento natural como uma doença? Devemos lidar com o processo natural de definho do corpo como não-natural? Se as respostas a estas perguntas forem afirmativas, poderemos garantir que o acesso a esta suposta cura ou tratamento será livre a toda a população ou estará restrita a um punhado de pessoas? Em um caso extremo onde o envelhecimento é possível de se erradicar, quais serão as consequências econômicas e sociais tanto no cenário em que todos possuem acesso quanto no cenário em que há uma exclusividade restrita?
+
+\section{OS PERIGOS DA CONTINUIDADE INDETERMINADA DA VIDA}
+Colocando de lado as revoluções onde o rompimento com o sistema vigente é abrupto, a humanidade em sua história percebe mudanças de paradigmas sociais e econômicos de forma lenta e gradual. Grande parte desse movimento de transformação se dá pela não-constância de gerações: elites e líderes morrem e consigo levam seus sistemas de crenças, dando lugar a pessoas novas com novas ideias e formas de pensar. Essa vicissitude garantiu por milênios a novas gerações que, em algum momento, seriam as forças principais de mudança de sua época.
+
+Hoje isso já não é mais verdade, ou pelo menos não como já foi um dia. Ao mesmo tempo que a vida humana foi prolongada, o tempo de poder que uma geração possui também se prolongou. Nações cuja população produtiva é primariamente de jovens são governadas por duas ou três gerações passadas. As correlações das condições econômicas dessas mesmas gerações se tornam tentadoras de atribuir uma relação de causa e efeito: \emph{baby boomers} possuem mais riqueza e capital político que as gerações seguintes: \emph{geração X}, \emph{millenials} e a \emph{geração Z}\footnote{Acerca deste dado, \citeonline{COACCI}, jornalista da revista Fortune escreve um artigo demonstrando o dado do estudo e tecendo comentários a respeito. Veja a bibliografia para acessar o artigo.}, onde são também superrepresentados em posições de poder político, como presidentes e ministros de Estado, quanto em poder econômico, como donos de grandes empresas. Ora, se já notamos essa destituição das rédeas da sociedade pelas gerações que estão em seu pico produtivo, o que acontecerá quando prolongarmos a expectativa de vida indeterminadamente?
+
+Diante de um cenário especulativo onde a vida humana é prolongada eternamente, quais seriam as consequências mais prováveis que enfrentaríamos? Podemos olhar para o presente e estressar o que já tem acontecido de uma forma piorada: a desigualdade de distribuição de riquezas e o poder político entre as gerações aumentariam na mesma velocidade do aumento da expectativa de vida da classe dominante. Se hoje já temos três gerações em sua fase produtiva sendo governadas pela sua antecessora, quantas gerações passarão subordinadas a apenas uma?
+
+Dentro deste mesmo cenário, podemos também especular que o acesso ao prolongamento da vida não será livre, ou seja, será restrito a um grupo determinado de pessoas. Tal como num filme de ficção científica distópico, é possível imaginar uma pequena elite gozando de uma vida infindável enquanto o restante da humanidade sobrevive em torno de uma estrutura socio-econômica piramidal fadada ao contínuo serviço de todas as gerações em prol de uma única detentora da vida eterna. Apesar destes questionamentos e ensaios sobre o que aconteceria num nível social e econômico caso a tecnologia avance ao ponto de garantir a vida eterna, eles não atacam o problema mais pertinente: é correto que se viva para sempre? É correto que consideremos a condição natural de envelhecimento como uma doença?
+
+\section{A NECESSIDADE DE NOVOS IMPERATIVOS ÉTICOS}
+Em mãos de um gigantesco potencial provindas dessas novas tecnologias e possibilidades futuras de aumento drástico da duração da vida humana, se torna extremamente necessário a reformulação dos fundamentos e imperativos éticos da nossa sociedade. É possível que nossas normas éticas atuais tenham como pressuposto o ciclo natural de vida e de morte que a sociedade percebeu até então, o que as tornaria, portanto, obsoletas.
+
+Assim, é imprescindível que essas novas formulações se atentem ao acesso democrático a toda tecnologia que se proponha prolongar a vida, para que não exista um grupo seleto e restrito que a domine. Também, não menos importante, é necessário repensar as estruturas políticas de poder para que todas as gerações tenham espaço para o exercício de poder decisório, evitando que gerações anteriores se perpetuem no poder político e econômico. E, por fim, repensar sobre o valor da vida em si: é possível que, apesar de prolongado por décadas a mais que o comum hoje, ainda exista um limite para esse prolongamento e será necessário reconhecer um limite da intervenção humana sobre um processo natural.
+
+\section{CONSIDERAÇÕES FINAIS}
+Haverão extremos desafios éticos acerca da continuidade indeterminada da vida de uma forma que não há precedentes históricos. Será necessário, portanto, que a sociedade deixe a costumeira visão positivista e cientificista de lado e se atente aos problemas iminentes deste grande avanço tecnológico: injustiça econômica e política, desigualdade social e obsolescência das estruturas políticas de poder.
+
+Portanto, esta não deveria ser uma discussão presente apenas em seletos grupos de elites econômicas buscando para si mesma o elixir da vida eterna, mas sim de toda humanidade. Serão os valores formados pelo coletivo, visando o bem comum, que melhor caminharão para um novo modelo ético de vida.
+
+
+\pagebreak
+\section{DECLARAÇÃO DE INTEGRIDADE ACADÊMICA}
+Eu, Gabriel Cardoso dos Santos Faleiro, declaro que produzi este texto de maneira íntegra e original, sem recorrer ao plágio ou ao uso de inteligência artificial para sua criação. Todas as ideias, argumentos e referências foram desenvolvidos de forma honesta, garantindo que o conteúdo reflita exclusivamente meu próprio raciocínio e pesquisa.
+% ----------------------------------------------------------
+
+\pagebreak
+\renewcommand{\bibname}{{REFER\^ENCIAS}}
+\bibliographystyle{abntex2-alf}
+\bibliography{ec_entrega_02.bib}
+
+\end{document}
