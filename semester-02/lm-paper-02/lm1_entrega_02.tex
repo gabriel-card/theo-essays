@@ -1,0 +1,213 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{LIDERANÇA E MINISTÉRIO \\ ENTREGA 2}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2025}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{ENTREGA 1}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Liderança e Ministério, solicitado pelo prof. José Januário da Silva Filho}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico},
+		hidelinks=true,
+		% colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    \center
+    \ABNTEXchapterfont\large\imprimirinstituicao
+
+    \ABNTEXchapterfont\large\imprimirautor
+
+    \vfill
+    \begin{center}
+    \ABNTEXchapterfont\bfseries\large\imprimirtitulo
+    \end{center}
+    \vfill
+
+    \large\imprimirlocal %<<<<<<<<<<<mude
+
+    \large\imprimirdata %<<<<<<<< mude
+
+    \vspace*{1cm}
+  \end{capa}
+}
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+% Entrega 2 - Observando com atenção o Texto Bíblico de João 10: 1 a 14, descreva o conceito de “Liderança por Pastoreio “ exemplificando na conduta ministerial de Jesus. Mínimo: 01 página.                                    
+
+
+\section{A LIDERANÇA, O PASTOR E A PORTA}
+Encontramos no décimo capítulo do evangelho de João um breve sermão de Cristo acerca de sua identidade e da identidade de seus seguidores e discípulos. Se aproveitando de elementos presentes na cultura judaica da época, Jesus utiliza as figuras relacionadas a um rebanho: ovelhas, pastor, curral. No decorrer do texto, pode-se captar algumas nuâncias que exemplificam o que se chama de liderança por pastoreio.
+
+Cristo cria uma distinção clara entre Ele e falsos mestres que o antecederam: as ovelhas não reconheceram as vozes desses falsos mestres, a quem chamou de ladrões e salteadores. Como não a reconheceram, não o seguiram; diferentemente dEle em que as ovelhas reconheceram sua voz e o seguiram, se chamando assim de pastor. Esse reconhecimento por parte das ovelhas não se dá num vácuo: a imagem de um pastor de ovelhas evoca uma função de guia e cuidado constante de um rebanho inteiro. As ovelhas reconhecem a voz de seu pastor porque estão com seu pastor todos os dias, sendo guiadas, alimentadas, protegidas e cuidadas. Ou seja, da mesma forma que o serviço prestado pelo pastor das ovelhas tornam-o reconhecido pelas ovelhas como seu pastor, um líder pastoral também só será reconhecido como líder pelos seus liderados mediante seu serviço prestado.
+
+Temos, assim, a subversão da expectativa do que é um líder pela secularidade e o líder pastoral apresentado por Cristo. Em contraste a líderes autocráticos, militarescos e inflamados, temos a figura de alguém que dedica seu tempo, esforço físico e até mesmo sua própria segurança em prol de seus liderados. Porém existe uma imagem que Cristo também atribui a si que distoa da figura pastoral que ele apresenta: a porta. Cristo se personifica na porta do aprisco dizendo que Ele é a porta das ovelhas; e completa dizendo que quem entrar por Ele será salvo e encontrará pasto. Ao se colocar tanto na figura do pastor quanto da porta do aprisco, Cristo está dizendo que Ele não é apenas um líder, mas também o Messias que restaurará todas as coisas.
+
+Assim, o trabalho de um pastor ou líder ministerial no exercício de sua liderança precisa sempre apontar para a porta, que é Cristo. Servir à sua comunidade com zelo, amor e, sobretudo, guiando-os na direção da salvação. Da mesma forma que um pastor cuida do rebanho inteiro ao mesmo tempo que se ausenta para resgatar uma única ovelha, é necessário que enquanto se guia toda a comunidade em discipulado, o líder se atente às necessidades individuais de cada liderado para que consigam caminhar juntos e, por fim, adentrar a porta e à salvação prometida por Jesus.
+
+
+\pagebreak
+\section{DECLARAÇÃO DE INTEGRIDADE ACADÊMICA}
+Eu, Gabriel Cardoso dos Santos Faleiro, declaro que produzi este texto de maneira íntegra e original, sem recorrer ao plágio ou ao uso de inteligência artificial para sua criação. Todas as ideias, argumentos e referências foram desenvolvidos de forma honesta, garantindo que o conteúdo reflita exclusivamente meu próprio raciocínio e pesquisa.
+% ----------------------------------------------------------
+
+\pagebreak
+\renewcommand{\bibname}{{REFER\^ENCIAS}}
+\bibliographystyle{abntex2-alf}
+\bibliography{at2_entrega_01.bib}
+
+\end{document}

@@ -1,0 +1,223 @@
+
+\documentclass[
+	% -- opções da classe memoir --
+    article,            % artigo academico
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside (twoside)
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{times}				% Usa a fonte Times Roman			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+% ---
+% FORMATAÇAO FLAM
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.5cm}
+\setlength\afterchapskip{\lineskip}
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+\renewcommand{\ABNTEXchapterfont}{\normalfont}
+\renewcommand{\ABNTEXsectionfontsize}{\large\bfseries}
+\renewcommand{\cftsectionfont}{\bfseries\MakeTextUppercase}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+\renewcommand{\cftsubsectionfont}{\normalfont\MakeTextUppercase} % Tirar negrito das subsecoes no sumario
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize\bfseries}
+\renewcommand{\cftsubsubsectionfont}{\bfseries} % Tirar negrito das subsecoes no sumario
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{LIDERANÇA E MINISTÉRIO \\ ENTREGA 3}
+\autor{GABRIEL CARDOSO DOS SANTOS FALEIRO}
+\local{ARUJÁ-SP}
+\data{2025}
+\instituicao{%
+  FLAM - FACULDADE LATINO AMERICANA
+}
+\tipotrabalho{ENTREGA 3}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Trabalho da disciplina de Liderança e Ministério, solicitado pelo prof. José Januário da Silva Filho}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={Gabriel Cardoso dos Santos Faleiro},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico},
+		hidelinks=true,
+		% colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+\citeoption{abnt-full-initials=yes}
+
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    \center
+    \ABNTEXchapterfont\large\imprimirinstituicao
+
+    \ABNTEXchapterfont\large\imprimirautor
+
+    \vfill
+    \begin{center}
+    \ABNTEXchapterfont\bfseries\large\imprimirtitulo
+    \end{center}
+    \vfill
+
+    \large\imprimirlocal %<<<<<<<<<<<mude
+
+    \large\imprimirdata %<<<<<<<< mude
+
+    \vspace*{1cm}
+  \end{capa}
+}
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+\pagestyle{simple}
+
+% ----------------------------------------------------------
+% Introdução (mas presente no Sumário)
+
+% Entrega Final na PROVA ONLINE - Tendo em vista o estilo de liderança do Apóstolo Paulo, visto especialmente nas suas viagens missionárias e no trato com a problemática igreja de Corinto, cite e comente cinco qualidades indispensáveis no exercício da liderança Cristã . Mínimo: 01 página
+
+
+
+\section{CARACTERÍSTICAS DE UMA LIDERANÇA CRISTÃ EM PAULO COM OS CORINTÍOS}
+\subsection{CENTRALIDADE DE CRISTO COMO ÚNICO DIGNO DE HONRA E GLÓRIA}
+Paulo não se deixou enobrecer pelos membros da igreja de Corinto que o reivindicavam como líder em suas brigas sectárias (1Co 1:10). Ao suplicar aos irmãos que cessassem essas brigas tolas, Paulo aponta para quem deveria, antes de tudo, estar sendo o centro de toda reivindicação de identidade da comunidade: Cristo e seu Evangelho (1Co 3:5).
+
+\subsection{EXORTAÇÕES RESPALDADAS EM SEU PRÓPRIO TESTEMUNHO}
+Em todas exortações, Paulo evoca o seu próprio exemplo para chamar seus irmãos ao arrependimento e à mudança comportamental. Ao exortar a igreja de Corinto quanto à sua conduta de envolver juízes do governo em ações judiciais contra outros irmãos ao invés de resolver entre si mesmos (1Co 6:1-11), Paulo faz a pergunta retórica: “(...) Por que não sofreis antes a injustiça? Por que não sofreis antes o dano?” (1Co 6:7b). Esta indagação só surte efeito quando feita por alguém que sofreu voluntariamente essa mesma injustiça e dano, senão, pode facilmente ser descartado como retórica leviana e vazia. Os irmãos de Corinto sabiam da vida de Paulo e de toda perseguição e sofrimento que o seguia até aquele momento. Portanto, o único efeito da retórica de Paulo possível é o de auto exame em contraste com o testemunho do apóstolo.
+
+\subsection{SER ACESSÍVEL E RELACIONÁVEL}
+Paulo, ao pregar o evangelho, se esforçou para ser entendido e percebido como um igual aos que o ouviam. Em 1Co 9:19-27, demonstra que para diferentes grupos étnicos e sociais ele vestiu suas sandálias para se relacionar: no meio de judeus, viveu como judeus debaixo da Lei, no meio de gentios viveu de modo independente da Lei, em meio aos fracos se fez fraco. Através desse comportamento, Paulo consegue dialogar e conviver com todos os diferentes grupos da igreja de Corinto de forma mansa e aceitável, tornando sua mensagem mais palatável a seus ouvintes e seu exemplo de vida como alcançável e desejável.
+
+\subsection{MINISTRO DA RECONCILIAÇÃO}
+Temos em 2Co 2:5-13 um pedido de Paulo a reconciliação de um irmão com o restante da igreja de Corinto, que muito provavelmente, pecou contra os outros irmãos da igreja e contra Paulo. Com muita sabedoria e amor, Paulo instrui os irmãos a, além de perdoar, confortar quem os transgrediu. Sabedoria porque Paulo entende que se a mágoa se estender por um período de tempo maior do que deveria, pode criar uma cisão dentro da comunidade que satanás poderia utilizar como vantagem. E amor porque Paulo também entende que, a mesma expressão de amor do Evangelho de Cristo que culmina na reconciliação da humanidade com o Pai através da morte e ressurreição de Cristo, é a expressão que a igreja deve manifestar em prol da reconciliação com o irmão que pecou contra eles e se arrependeu.
+
+\subsection{PRIORIZAR O BEM DA COMUNIDADE, MESMO QUE SIGNIFIQUE SEU PRÓPRIO MAL}
+Em seu encerramento da segunda carta aos Coríntios, no capítulo 13, Paulo reforça à igreja que devem examinar a si mesmos e entender por si próprios se suas atitudes correspondem com as atitudes de quem possui a fé em Cristo. Ao fazerem isto, Paulo acredita que a igreja entenderá que ele não os repreendeu fora da presença e vontade de Cristo. Mas, no versículo 7, Paulo confessa que, mesmo que na verdade ele seja reprovado, ele se alegra em saber que a igreja de Corinto praticou o bem e recebeu a aprovação do Senhor. Paulo deixa claro que, o que mais importa para ele é que a igreja de Corinto siga para o alvo, que é Cristo, independente até mesmo de sua própria reputação como apóstolo.
+
+\nocite{BIBLIA}
+
+
+\pagebreak
+\section{DECLARAÇÃO DE INTEGRIDADE ACADÊMICA}
+Eu, Gabriel Cardoso dos Santos Faleiro, declaro que produzi este texto de maneira íntegra e original, sem recorrer ao plágio ou ao uso de inteligência artificial para sua criação. Todas as ideias, argumentos e referências foram desenvolvidos de forma honesta, garantindo que o conteúdo reflita exclusivamente meu próprio raciocínio e pesquisa.
+% ----------------------------------------------------------
+
+\pagebreak
+\renewcommand{\bibname}{{REFER\^ENCIAS}}
+\bibliographystyle{abntex2-alf}
+\bibliography{lm1_entrega_03.bib}
+
+\end{document}
